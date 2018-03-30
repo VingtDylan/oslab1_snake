@@ -58,7 +58,7 @@ void printfloat(const float flt){
     printint(tmpflt);
 }
 
-void printf(const char *fmt,... ){
+int printf(const char *fmt,... ){
     va_list ap;
     va_start(ap,fmt);
     while(*fmt){
@@ -69,28 +69,39 @@ void printf(const char *fmt,... ){
        else{
           fmt++;
           switch(*fmt){
-             case 'c': char valch=va_arg(ap,int);
-                       printch(valch);
-                       fmt++;   
-                       break;
-             case 'd': int valint=va_arg(ap,int);
-                       printstr(valstr);
-                       fmt++;
-                       break;
-             case 's': char *valstr=va_arg(ap,char*);
-                       printstr(valstr);
-                       fmt++;
-                       break;
-             case 'f': float valflt=va_arg(ap,double);
-                       printfloat(valflt);
-                       fmt++;
-                       break;
-             default:  printch(*fmt);
-                       fmt++;
+             case 'c': {
+                          char valch=va_arg(ap,int);
+                          printch(valch);
+                          fmt++;   
+                          break;
+                       }
+             case 'd': {
+                          int valint=va_arg(ap,int);
+                          printstr(valstr);
+                          fmt++;
+                          break;
+                       }
+             case 's': {
+                          char *valstr=va_arg(ap,char*);
+                          printstr(valstr);
+                          fmt++;
+                          break;
+                       }
+             case 'f': {  
+                          float valflt=va_arg(ap,double);
+                          printfloat(valflt);
+                          fmt++;
+                          break;
+                       }
+             default:  {  
+                          printch(*fmt);
+                          fmt++;
+                       }
           }
        }
     }
     va_end(ap);
+    return 0;
 }
 
 
