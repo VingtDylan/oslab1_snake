@@ -18,7 +18,7 @@ int get_fps(){
   return real_fps;
 }
 
-void main_loop(){ 
+/*void main_loop(){ 
    int num_draw=0;
    //int frames=0;
    int key;
@@ -51,6 +51,6 @@ void main_loop(){
     }
     return ;
 }
-
+*/
 
 
