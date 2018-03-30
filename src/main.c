@@ -2,7 +2,7 @@
 #include <amdev.h>
 #include <string.h>
 #include <stdlib.h>
-//#include <stdio.h>
+#include <stdio.h>
 #include <assert.h>
 #include <game.h>
 
