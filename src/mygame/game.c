@@ -54,7 +54,7 @@ void main_loop(){
       }
       next_frame+=1000/FPS;
     }
-    return 0;
+    return ;
 }
 
 
