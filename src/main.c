@@ -14,13 +14,14 @@
 }
 */
 
-/*
+#define HZ 100
+#define FPS 30
+
 static void input_test(_Device *dev);
 static void timer_test(_Device *dev);
 static void video_test(_Device *dev);
 static void pciconf_test(_Device *dev);
 static void ata_test(_Device *dev);
-*/
 
 static int real_fps;
 
@@ -36,7 +37,7 @@ int get_fps(){
 int main() {
   if (_ioe_init() != 0) _halt(1);
   printf("_heap = [%08x, %08x)\n", _heap.start, _heap.end);
-  /*for (int n = 1; ; n++) {
+  for (int n = 1; ; n++) {
     _Device *dev = _device(n);
     if (!dev) break;
     printf("* Device: %s\n", dev->name);
@@ -49,20 +50,40 @@ int main() {
     }
     printf("\n");
   }
-  next_frame=0;
+  
+  
+  int num_draw=0;
+  //int frames=0;
+  unsigned long next_frame=0;
+  unsigned long next_refresh=0;
   while(1){
+    bool fresh=false;
     while(uptime()<next_frame);
+    
+    //frames++; 
+   
+    if(uptime()>next_refresh){
+         fresh=true;
+         next_refresh+=1000/FPS;
+    }
+    //next_frame+=1000/FPS;
+
     while((key=readkey())!=_KEY_NONE){
        kbd_event(key);
     } 
+   
     game_progress();
-    screen_update();
+
+    if(fresh()){
+       num_draw++;
+       set_fps(num_draw*100/uptime());
+       screen_update();
+    }
     next_frame+=1000/FPS;
-  }*/
+  }
   return 0;
 }
 
-/*
 static void input_test(_Device *dev) {
   printf("Input device test skipped.\n");
 }
@@ -162,4 +183,3 @@ static void ata_test(_Device *dev) {
     printf("\n");
   }
 }
-*/
