@@ -16,7 +16,7 @@ char *itoa(int a){
 void  memcpy(char *dest,const char *src,size_t size){
    //asm volatile ("cld; rep movsb" : : "c"(size),"S"(src),"D"(dest));  
    //assert(dest!=NULL&&src==NULL);
-   char *ret_val=dest;
+   //char *ret_val=dest;
    if(dest>=src&&dest<=src+size-1){
        dest=dest+size-1;
        src=src+size-1;
@@ -63,7 +63,7 @@ int strcmp(const char *str1,const char *str2){
     }
     if(ret_val<0)  
        return -1;
-    else if(ret>0)
+    else if(ret_val>0)
        return 1;
     return 0;
 }  
