@@ -8,11 +8,6 @@
 #define HZ 100
 #define FPS 30
 
-typedef enum{
-   false,
-   true
-}bool;
-
 static int real_fps;
 
 void set_fps(int value){
