@@ -13,7 +13,7 @@ char *itoa(int a){
    return p;
 }
 
-char memcpy(char *dest,const char *src,size_t size){
+void  memcpy(char *dest,const char *src,size_t size){
    //asm volatile ("cld; rep movsb" : : "c"(size),"S"(src),"D"(dest));  
    //assert(dest!=NULL&&src==NULL);
    char *ret_val=dest;
@@ -51,7 +51,7 @@ char *strcpy(char *dest,const char *src){
 
 char *strncpy(char *dest,const char *src,size_t size){
     char *ret_val=dest;
-    memcpy(dest,src,(strlen(src)>size?size:strlen(src))+1;
+    memcpy(dest,src,(strlen(src)>size?size:strlen(src))+1);
     return ret_val;
 }
 
