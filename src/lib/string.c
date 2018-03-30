@@ -77,7 +77,7 @@ int printf(const char *fmt,... ){
                        }
              case 'd': {
                           int valint=va_arg(ap,int);
-                          printstr(valint);
+                          printint(valint);
                           fmt++;
                           break;
                        }
