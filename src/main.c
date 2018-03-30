@@ -20,10 +20,21 @@ static void video_test(_Device *dev);
 static void pciconf_test(_Device *dev);
 static void ata_test(_Device *dev);
 
+static int real_fps;
+
+void set_fps(int value){
+  rel_fps=value;
+}
+
+int get_fps(){
+  return real_fps;
+}
+
+
 int main() {
   if (_ioe_init() != 0) _halt(1);
   printf("_heap = [%08x, %08x)\n", _heap.start, _heap.end);
-  for (int n = 1; ; n++) {
+  /*for (int n = 1; ; n++) {
     _Device *dev = _device(n);
     if (!dev) break;
     printf("* Device: %s\n", dev->name);
@@ -36,7 +47,6 @@ int main() {
     }
     printf("\n");
   }
-  /*
   next_frame=0;
   while(1){
     while(uptime()<next_frame);
