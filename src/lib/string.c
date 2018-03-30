@@ -29,19 +29,19 @@ size_t strlen(const char *str){
 }
 
 void printch(const char ch){
-    putchar(ch);
+    _putc(ch);
 }
 
 void printint(const int dec){
     if(dec==0)
         return ;
     printint(dec/10);
-    putchar((char)(dec%10+'0'));
+    _putc((char)(dec%10+'0'));
 }
 
 void printstr(const char *ptr){
     while(*ptr){
-       putchar(*ptr);
+       _putc(*ptr);
        ptr++;
     }
 }
@@ -54,7 +54,7 @@ void printfloat(const float flt){
     else
         tmpflt=tmpflt/10;
     printint(tmpint);
-    putchar('.');
+    _putc('.');
     printint(tmpflt);
 }
 
@@ -63,7 +63,7 @@ int printf(const char *fmt,... ){
     va_start(ap,fmt);
     while(*fmt){
        if(*fmt!='%'){
-          putchar(*fmt);
+          _putc(*fmt);
           fmt++;
        }
        else{
