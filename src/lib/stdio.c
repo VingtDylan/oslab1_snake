@@ -97,7 +97,6 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     return --index;    
 }
 
-/*
 void printch(const char ch){
     _putc(ch);
 }
@@ -173,4 +172,4 @@ int printf(const char *fmt,... ){
     va_end(ap);
     return 0;
 }
-*/
+
