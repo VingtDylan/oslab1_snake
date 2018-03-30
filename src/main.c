@@ -14,16 +14,18 @@
 }
 */
 
+/*
 static void input_test(_Device *dev);
 static void timer_test(_Device *dev);
 static void video_test(_Device *dev);
 static void pciconf_test(_Device *dev);
 static void ata_test(_Device *dev);
+*/
 
 static int real_fps;
 
 void set_fps(int value){
-  rel_fps=value;
+  real_fps=value;
 }
 
 int get_fps(){
