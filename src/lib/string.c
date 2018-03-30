@@ -77,7 +77,7 @@ int strncmp(const char *str1,const char *str2,size_t size){
     }
     if(ret_val<0)  
        return -1;
-    else if(ret>0)
+    else if(ret_val>0)
        return 1;
     return 0;
 }
