@@ -18,7 +18,7 @@ unsigned int write_int(char *buf,int val){
        length++;
     }while(val);
    
-    _tmp=length;
+    _tmp=itoa(length);
     while(length){
        *buf=stack[length-1];
        length--;
