@@ -1,7 +1,7 @@
 #include "amdev.h"
 #include "am.h"
 #include "string.h"
-
+/*
 static int letter_pressed=-1;
 
 void press(int scan_code){
@@ -35,7 +35,7 @@ void kbd_event(int code){
    key_code=code;
    press_key(code);
 }
-
+*/
 
 
 
