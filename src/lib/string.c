@@ -1,7 +1,7 @@
 #include "am.h"
 #include "stdio.h"
 #include "string.h"
-#include "strarg.h"
+#include "stdarg.h"
 #include "stdlib.h"
 
 char *itoa(int a){
