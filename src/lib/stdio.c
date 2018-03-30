@@ -4,7 +4,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-unsigned int wrire_int(char *buf,int val){
+unsigned int write_int(char *buf,int val){
     unsigned char stack[10];
     unsigned char length=0;
     char *_tmp;
@@ -16,7 +16,7 @@ unsigned int wrire_int(char *buf,int val){
        stack[length]='0'+(val%10);
        val/=10;
        length++;
-    }while(val)
+    }while(val);
    
     _tmp=length;
     while(length){
@@ -29,7 +29,7 @@ unsigned int wrire_int(char *buf,int val){
 
 int sprintf(char *buf,const char *fmt,...){
     va_list arg_ptr;
-    unsigned int buf_length=strlen(buf);
+    //unsigned int buf_length=strlen(buf);
     unsigned int fmt_length=strlen(fmt);
     unsigned int index=0;
    
@@ -62,9 +62,9 @@ int sprintf(char *buf,const char *fmt,...){
     return --index;
 }
 
-int snprintf(char *s,size_t size,const char *fmt,...){
+int snprintf(char *buf,size_t size,const char *fmt,...){
     va_list arg_ptr;
-    unsigned int buf_length=strlen(buf);
+    //unsigned int buf_length=strlen(buf);
     unsigned int fmt_length=( strlen(fmt) > size ? size : strlen(fmt) );
     unsigned int index=0;
    
