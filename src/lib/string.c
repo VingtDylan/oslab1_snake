@@ -14,11 +14,24 @@ char *itoa(int a){
 }
 
 void memcpy(void *dest,const void *src,size_t size){
-  
+   //asm volatile ("cld; rep movsb" : : "c"(size),"S"(src),"D"(dest));  
+   //assert(dest!=NULL&&src==NULL);
+   char *ret_val=dest;
+   if(dest>=src&&dest<=src+size-1){
+       dest=dest+size-1;
+       src=src+size-1;
+       while(size--)
+           *dest--=*src--;
+   }
+   else{
+       while(size--)
+           *dest++=*src++;
+   }
+   //return ret_val
 }
 
 void memset(void *dest,int data,size_t size){
-
+   asm volatile ("cld; rep stosb" : : "c"(size),"a"(data),"D"(dest));
 }
 
 size_t strlen(const char *str){
@@ -28,81 +41,46 @@ size_t strlen(const char *str){
     return len;
 }
 
-void printch(const char ch){
-    _putc(ch);
+char *strcpy(char *dest,const char *src){
+    //assert(dest!=NULL&&src!=NULL);
+    char *ret_val=dest;
+    memcpy(dest,src,strlen(src)+1);
+    return ret_val;
 }
 
-void printint(const int dec){
-    if(dec==0)
-        return ;
-    printint(dec/10);
-    _putc((char)(dec%10+'0'));
+char *strncpy(char *dest,const char *src,size_t size){
+    char *ret_val=dest;
+    memcpy(dest,src,(strlen(src)>size?size:strlen(src))+1;
+    return ret_val;
 }
 
-void printstr(const char *ptr){
-    while(*ptr){
-       _putc(*ptr);
-       ptr++;
+int strcmp(const char *str1,const char *str2){
+    int ret_val=0;
+    while(!(ret_val=*(unsigned char *)str1-*(unsigned char *)str2)&&*str1){
+       str1++;
+       str2++;
     }
-}
+    if(ret_val<0)  
+       return -1;
+    else if(ret>0)
+       return 1;
+    return 0;
+}  
 
-void printfloat(const float flt){
-    int tmpint =(int)flt;
-    int tmpflt=(int)(100000*(flt-tmpint));
-    if(tmpint%10>=5)
-        tmpflt=tmpflt/10+1;
-    else
-        tmpflt=tmpflt/10;
-    printint(tmpint);
-    _putc('.');
-    printint(tmpflt);
-}
-
-int printf(const char *fmt,... ){
-    va_list ap;
-    va_start(ap,fmt);
-    while(*fmt){
-       if(*fmt!='%'){
-          _putc(*fmt);
-          fmt++;
-       }
-       else{
-          fmt++;
-          switch(*fmt){
-             case 'c': {
-                          char valch=va_arg(ap,int);
-                          printch(valch);
-                          fmt++;   
-                          break;
-                       }
-             case 'd': {
-                          int valint=va_arg(ap,int);
-                          printint(valint);
-                          fmt++;
-                          break;
-                       }
-             case 's': {
-                          char *valstr=va_arg(ap,char*);
-                          printstr(valstr);
-                          fmt++;
-                          break;
-                       }
-             case 'f': {  
-                          float valflt=va_arg(ap,double);
-                          printfloat(valflt);
-                          fmt++;
-                          break;
-                       }
-             default:  {  
-                          printch(*fmt);
-                          fmt++;
-                       }
-          }
-       }
+int strncmp(const char *str1,const char *str2,size_t size){
+    int ret_val=0;
+    while(!(ret_val=*(unsigned char *)str1-*(unsigned char *)str2)&&*str1&&size){
+       str1++;
+       str2++;
+       size--;
     }
-    va_end(ap);
+    if(ret_val<0)  
+       return -1;
+    else if(ret>0)
+       return 1;
     return 0;
 }
+
 
 
 

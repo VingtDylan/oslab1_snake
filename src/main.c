@@ -1,6 +1,9 @@
 #include <am.h>
 #include <amdev.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
 
 // TODO: implement necessary libraries
 /*int printf(const char *fmt, ...) {
@@ -33,8 +36,20 @@ int main() {
     }
     printf("\n");
   }
+  /*
+  next_frame=0;
+  while(1){
+    while(uptime()<next_frame);
+    while((key=readkey())!=_KEY_NONE){
+       kbd_event(key);
+    } 
+    game_progress();
+    screen_update();
+    next_frame+=1000/FPS;
+  }*/
   return 0;
 }
+
 
 static void input_test(_Device *dev) {
   printf("Input device test skipped.\n");
