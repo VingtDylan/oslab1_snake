@@ -13,7 +13,7 @@ char *itoa(int a){
    return p;
 }
 
-void memcpy(void *dest,const void *src,size_t size){
+char memcpy(char *dest,const char *src,size_t size){
    //asm volatile ("cld; rep movsb" : : "c"(size),"S"(src),"D"(dest));  
    //assert(dest!=NULL&&src==NULL);
    char *ret_val=dest;
@@ -30,9 +30,10 @@ void memcpy(void *dest,const void *src,size_t size){
    //return ret_val
 }
 
-void memset(void *dest,int data,size_t size){
+/*void memset(void *dest,int data,size_t size){
    asm volatile ("cld; rep stosb" : : "c"(size),"a"(data),"D"(dest));
 }
+*/
 
 size_t strlen(const char *str){
     int len=0;
