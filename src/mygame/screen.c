@@ -5,6 +5,7 @@
 #include "amdev.h"
 #include "game.h"
 
+/*
 static uint32_t canvas[H][W];
 
 extern char font8x8_basic[128][8];
@@ -53,3 +54,4 @@ void screen_update(){
    draw_string("FPS",0,strlen(itoa(get_fps()))*8,18);
      
 } 
+*/
