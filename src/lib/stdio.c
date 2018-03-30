@@ -117,7 +117,7 @@ void printstr(const char *ptr){
 
 void printfloat(const float flt){
     int tmpint =(int)flt;
-    int tmpflt=(int)(100000*(flt-tmpint));
+    int tmpflt=(int)(100001*(flt-tmpint));
     if(tmpint%10>=5)
         tmpflt=tmpflt/10+1;
     else
