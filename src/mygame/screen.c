@@ -3,9 +3,7 @@
 #include "stdio.h"
 #include "am.h"
 #include "amdev.h"
-
-#define W 320
-#define H 200
+#include "game.h"
 
 static uint32_t canvas[H][W];
 
