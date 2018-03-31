@@ -276,11 +276,20 @@ static char * number(char * str, unsigned long long num, int base, int size, int
                 *str++ = tmp[i];
            while (size-- > 0)
                 *str++ = ' ';
-             return str;
+      return str;
 
-     }
+}
 
 
+
+
+struct console_ops {
+    int (*open)(void);
+    void (*write)(const char *buf, int len);
+    void (*edit_cmdline)(char *buf, int len);
+    void (*close)(void);
+    void *data;
+};
 
 int vsprintf(char *buf, const char *fmt, va_list args)
 {
