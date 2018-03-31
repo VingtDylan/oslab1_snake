@@ -82,7 +82,7 @@ void main_loop(){
            //EXIT_ERR("clear!");  
         printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
         //fflush(stdout);  
-        sleep(1);  
+        //sleep(1);  
         printf("\n");  
         //if(system("clear")!=0)
            //EXIT_ERR("clear!");  
