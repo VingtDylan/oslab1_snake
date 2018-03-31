@@ -197,7 +197,8 @@ size_t strnlen(const char *s,size_t count){
     return c-s;
 }
 
-static noinline_for_stack
+static noinline_for_stack;
+
 char *number(char *buf, char *end, unsigned long long num,struct printf_spec spec){
      static const char digits[16] = "0123456789ABCDEF";         
      char tmp[66];        
