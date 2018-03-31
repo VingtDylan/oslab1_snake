@@ -4,6 +4,7 @@
 #include "stdlib.h"
 #include "am.h"
 #include "amdev.h"
+#include "unistd.h"
 
 #define M  4  
 #define maxn 256
