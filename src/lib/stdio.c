@@ -402,20 +402,15 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     return str - buf;
 }
 
-int Test_printf(const char *fmt, ...)
+int printf(const char *fmt, ...)
 {
-    //定义接收输出信息最大长度1024字节
     char printf_buf[1024];
-
-    //记录fmt对应的地址
     va_list args;
     int printed;
-    //得到首个%对应的字符地址
     Test_va_start(args, fmt);
     printed = Test_vsprintf(printf_buf, fmt, args);
     Test_va_end(args);
-    //输出到标准输出设备
-    puts(printf_buf);
+    _putc(printf_buf);
 
     return printed;
 }
