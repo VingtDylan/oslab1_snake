@@ -4,6 +4,14 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+#define ZEROPAD 1
+#define SIGN 2
+#define PLUS 4
+#define SPACE 8
+#define LEFT 16
+#define SPECIAL 32
+#define LARGE 64
+
 unsigned int write_int(char *buf,int val){
     unsigned char stack[10];
     unsigned char length=0;
