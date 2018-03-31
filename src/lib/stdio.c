@@ -135,9 +135,13 @@ int is_flag(char ch){
    return strchr("0-+ #",ch)!=NULL;
 }
 
+int is_digit(char ch){
+   return ('0'<=ch&&ch<='9');
+}
+
 int get_int(const char **fmt){
    int num=0;
-   while(isdigit(**fmt)){
+   while(is_digit(**fmt)){
        num=num*10+(**fmt-'0');
        (*fmt)++;
    }
@@ -223,7 +227,7 @@ int printf(const char *fmt,... ){
           //checkpoints
           if(is_flag(*fmt))
              flag=*fmt++;
-          if(isdigit(*fmt))
+          if(is_digit(*fmt))
              width=get_int(&fmt);
           
           switch(*fmt){
