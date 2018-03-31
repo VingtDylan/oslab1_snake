@@ -185,7 +185,7 @@ int printf(const char *fmt,... ){
                           break;
                        }
              case 'X':
-             case 'X': {
+             case 'x': {
                           int fdval=va_arg(ap,int);
                           char str[30];
                           myitoa(n,str,16);
