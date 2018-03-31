@@ -152,9 +152,7 @@ void printint(int num,int radix,int sign,char flag,int width,int precision){
     //precision to be completed
     if(flag&&flag!=0)
         return ;
-    //if(dec==0)
-    //    return ;
-    
+
     static char digits[]="0123456789abcdef";
     char buffer[1024];
    
@@ -162,13 +160,13 @@ void printint(int num,int radix,int sign,char flag,int width,int precision){
     uint32_t unum=num;
     if(sign&&num<0){
         negflag=1;
-        uum=-num;
+        unum=-num;
     }
 
     int i=0;
     do{
         buffer[i++]=digits[unum%radix];
-    }while((ux/=radix)!=0);
+    }while((unum/=radix)!=0);
    
     if(negflag)
         buffer[i++]='-';
@@ -185,6 +183,13 @@ void printstr(const char *ptr){
        _putc(*ptr);
        ptr++;
     }
+}
+
+void intpt(const int n){
+    if(n==0)
+        return;
+    intpt(n/10);
+    putchar((char)(n%10+'0');
 }
 
 void printfloat(const float flt){
