@@ -3,6 +3,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include "ctype.h"
 
 #define ZEROPAD 1
 #define SIGN 2
@@ -182,6 +183,13 @@ int printf(const char *fmt,... ){
     return 0;
 }
 */
+
+static int skip_atoi(const char **s){
+    int i=0;
+    while(isdigit(**s))
+        i=i*10+*((*s)++)-'0';
+    return i;
+}
 
 int vsprintf(char *buf, const char *fmt, va_list args)
 {
