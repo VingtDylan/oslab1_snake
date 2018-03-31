@@ -402,6 +402,13 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     return str - buf;
 }
 
+void printstr(const char *ptr){
+    while(*ptr){
+       _putc(*ptr);
+       ptr++;
+    }
+}
+
 int printf(const char *fmt, ...)
 {
     char printf_buf[1024];
@@ -410,7 +417,7 @@ int printf(const char *fmt, ...)
     Test_va_start(args, fmt);
     printed = Test_vsprintf(printf_buf, fmt, args);
     Test_va_end(args);
-    _putc(printf_buf);
+    printstr(printf_buf);
 
     return printed;
 }
