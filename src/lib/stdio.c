@@ -4,6 +4,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "ctype.h"
+#include "asm/div64.h"
 
 #define ZEROPAD 1
 #define SIGN 2
