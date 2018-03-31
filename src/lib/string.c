@@ -87,8 +87,8 @@ char *strchr(const char *s,int ch){
        return NULL;
     
     while(*s){
-       if(*s++(char)ch)
-           return (Char *)s;
+       if(*s==(char)ch)
+           return (char *)s;
        s++;
     }
     return NULL; 
