@@ -206,8 +206,9 @@ void printfloat(const float flt){
 
 int printf(const char *fmt,... ){
     
-    char flag;
-    int width,precision;
+    char flag='\0';
+    int width=0;
+    int precision=0;
    
     va_list ap;
     va_start(ap,fmt);
