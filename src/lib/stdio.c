@@ -106,7 +106,7 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     return --index;    
 }
 
-/*
+
 void printch(const char ch){
     _putc(ch);
 }
@@ -182,16 +182,8 @@ int printf(const char *fmt,... ){
     va_end(ap);
     return 0;
 }
-*/
 
 /*static int skip_atoi(const char **s){
-    int i=0;
-    while(isdigit(**s))
-        i=i*10+*((*s)++)-'0';
-    return i;
-}*/
-
-static int skip_atoi(const char **s){
     int i, c;
     for (i = 0; '0' <= (c = **s) && c <= '9'; ++*s)
         i = i*10 + c - '0';
@@ -504,7 +496,7 @@ int printf(const char *fmt, ...)
         //console_ops.write(sprint_buf, n);
     return n;
 }
-
+*/
 
 
 
