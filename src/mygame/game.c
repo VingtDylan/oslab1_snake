@@ -31,6 +31,14 @@
 #define HZ 100
 #define FPS 30
 
+#define EXIT_ERR(m)\
+do\
+{\
+   perror(m);\
+   exit(EXIT_FAILURE);\
+}\
+while(0)\
+
 static int real_fps;
 
 void set_fps(int value){
@@ -72,11 +80,11 @@ void main_loop(){
         if(system("clear")!=0)
            EXIT_ERR("clear!");  
         printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
-        fflush(stdout);  
+        //fflush(stdout);  
         sleep(1);  
         printf("\n");  
-        if(system("clear")!=0)
-           EXIT_ERR("clear!");  
+        //if(system("clear")!=0)
+           //EXIT_ERR("clear!");  
     }  
     printf("\033[0m");
    /*int num_draw=0;
