@@ -191,6 +191,12 @@ static int skip_atoi(const char **s){
     return i;
 }
 
+size_t strnlen(const char *s,size_t count){
+    const char *c;
+    for(c=s;count--&&*c!='\0';++c);
+    return c-s;
+}
+
 int vsprintf(char *buf, const char *fmt, va_list args)
 {
     int len;
