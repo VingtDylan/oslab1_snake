@@ -184,14 +184,14 @@ int printf(const char *fmt,... ){
                           fmt++;
                           break;
                        }
-             case 'X':
+             /*case 'X':
              case 'x': {
                           int fdval=va_arg(ap,int);
                           char str[30];
                           myitoa(fdval,str,16);
                           fputs(str,stdout);
                           break;
-                       }
+                       }*/
              case 's': {
                           char *valstr=va_arg(ap,char*);
                           printstr(valstr);
