@@ -189,7 +189,7 @@ void intpt(const int n){
     if(n==0)
         return;
     intpt(n/10);
-    putchar((char)(n%10+'0');
+    _putc((char)(n%10+'0'));
 }
 
 void printfloat(const float flt){
@@ -199,9 +199,9 @@ void printfloat(const float flt){
         tmpflt=tmpflt/10+1;
     else
         tmpflt=tmpflt/10;
-    printint(tmpint);
+    intpt(tmpint);
     _putc('.');
-    printint(tmpflt);
+    intpt(tmpflt);
 }
 
 int printf(const char *fmt,... ){
