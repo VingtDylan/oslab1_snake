@@ -492,8 +492,8 @@ int printf(const char *fmt, ...)
     va_start(args, fmt);
     n = vsprintf(sprint_buf, fmt, args);
     va_end(args);
-    if (console_ops.write)
-        console_ops.write(sprint_buf, n);
+    //if (console_ops.write)
+        //console_ops.write(sprint_buf, n);
     return n;
 }
 
