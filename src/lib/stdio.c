@@ -152,8 +152,8 @@ void printint(int num,int radix,int sign,char flag,int width,int precision){
     //precision to be completed
     if(flag&&flag!=0)
         return ;
-    if(dec==0)
-        return ;
+    //if(dec==0)
+    //    return ;
     
     static char digits[]="0123456789abcdef";
     char buffer[1024];
