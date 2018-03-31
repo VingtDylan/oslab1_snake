@@ -408,6 +408,9 @@ void printstr(const char *ptr){
        ptr++;
     }
 }
+ #define Test_va_start _crt_va_start 
+ #define Test_va_arg _crt_va_arg
+ #define Test_va_end _crt_va_end
 
 int printf(const char *fmt, ...)
 {
