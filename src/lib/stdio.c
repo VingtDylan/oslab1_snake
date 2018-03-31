@@ -184,11 +184,19 @@ int printf(const char *fmt,... ){
 }
 */
 
-static int skip_atoi(const char **s){
+/*static int skip_atoi(const char **s){
     int i=0;
     while(isdigit(**s))
         i=i*10+*((*s)++)-'0';
     return i;
+}*/
+
+static int skip_atoi(const char **s){
+    int i, c;
+    for (i = 0; '0' <= (c = **s) && c <= '9'; ++*s)
+        i = i*10 + c - '0';
+    return i;
+
 }
 
 size_t strnlen(const char *s,size_t count){
