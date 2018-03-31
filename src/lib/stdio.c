@@ -5,14 +5,6 @@
 #include "stdlib.h"
 #include "ctype.h"
 
-#define ZEROPAD 1
-#define SIGN 2
-#define PLUS 4
-#define SPACE 8
-#define LEFT 16
-#define SPECIAL 32
-#define LARGE 64
-
 unsigned int write_int(char *buf,int val){
     unsigned char stack[10];
     unsigned char length=0;
@@ -154,11 +146,11 @@ void printch(const char ch){
 
 void printint(int num,int radix,int sign,char flag,int width,int precision){
     //precision to be completed
-    if(flag&&flag!=0)
-        return ;
+    /*if(flag&&flag!=0)
+        return ;*/
 
     static char digits[]="0123456789abcdef";
-    char buffer[1024];
+    char buffer[30];
    
     int negflag=0;
     uint32_t unum=num;
@@ -176,7 +168,7 @@ void printint(int num,int radix,int sign,char flag,int width,int precision){
         buffer[i++]='-';
   
     while(i<width)
-        buffer[i++]=(flag=='0'?'0':'1');
+        buffer[i++]=(flag=='0'?'0':' ');
    
     while(--i>=0)
         printch(buffer[i]);
