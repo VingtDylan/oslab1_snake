@@ -11,6 +11,7 @@
 #define SPACE 8
 #define LEFT 16
 #define SPECIAL 32
+#define SMALL 32
 #define LARGE 64
 
 unsigned int write_int(char *buf,int val){
@@ -198,6 +199,15 @@ size_t strnlen(const char *s,size_t count){
 }
 
 static noinline_for_stack;
+
+struct printf_spec {
+        u8        type;               
+        u8        flags;               
+        u8        base;               
+        u8        qualifier;       
+        s16        field_width;       
+        s16        precision;       
+};
 
 char *number(char *buf, char *end, unsigned long long num,struct printf_spec spec){
      static const char digits[16] = "0123456789ABCDEF";         
