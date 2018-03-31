@@ -97,6 +97,9 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
                case 'c': ctmp=va_arg(arg_ptr,int);
                          *(buf++)=ctmp;
                          break;
+               case 'X':
+               case 'x': 
+                         break;
            } 
            index++;
        }
@@ -106,6 +109,27 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     return --index;    
 }
 
+
+void myitoa(int n,char str[],int radix){
+   int i,j,rest;
+   char tmp;
+   i=0;
+   do{
+      rest=n%radix;
+      if(rest>9) 
+         str[i]=rest-10+'A';
+      else
+         str[i]=rest+'0';
+      i++;
+   }while(n/radix);
+   str[i]='\0';
+  
+  for(i--,j=0;j<=i;j++,i--){
+      tmp=str[j];
+      str[j]=str[i];
+      str[i]=tmp;
+  }
+}
 
 void printch(const char ch){
     _putc(ch);
@@ -158,6 +182,14 @@ int printf(const char *fmt,... ){
                           int valint=va_arg(ap,int);
                           printint(valint);
                           fmt++;
+                          break;
+                       }
+             case 'X':
+             case 'X': {
+                          int fdval=va_arg(ap,int);
+                          char str[30];
+                          myitoa(n,str,16);
+                          fputs(str,stdout);
                           break;
                        }
              case 's': {
