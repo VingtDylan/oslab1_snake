@@ -176,7 +176,8 @@ int printf(const char *fmt,... ){
                           printch(*fmt);
                           fmt++;
                        }
-          }
-       }
-    }   
+         }
+      } 
+    }
+    return 0;  
 }         
