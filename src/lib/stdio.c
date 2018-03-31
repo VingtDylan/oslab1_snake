@@ -158,11 +158,11 @@ void printint(int num,int radix,int sign,char flag,int width,int precision){
     static char digits[]="0123456789abcdef";
     char buffer[1024];
    
-    int negaflag=0;
-    uin32_t unum=num;
+    int negflag=0;
+    uint32_t unum=num;
     if(sign&&num<0){
         negflag=1;
-        ux=-x;
+        uum=-num;
     }
 
     int i=0;
@@ -170,7 +170,7 @@ void printint(int num,int radix,int sign,char flag,int width,int precision){
         buffer[i++]=digits[unum%radix];
     }while((ux/=radix)!=0);
    
-    if(negaflag)
+    if(negflag)
         buffer[i++]='-';
   
     while(i<width)
