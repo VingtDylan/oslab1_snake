@@ -109,6 +109,7 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     return --index;    
 }
 
+
 void myitoa(int n,char str[],int radix){
    int i,j,rest;
    char tmp;
@@ -130,15 +131,53 @@ void myitoa(int n,char str[],int radix){
   }
 }
 
+int is_flag(char ch){
+   return strchr("0-+ #",ch)!=NULL;
+}
+
+int get_int(const char **fmt){
+   int num=0;
+   while(isdigit(**fmt)){
+       num=num*10+(**fmt-'0');
+       (*fmt)++;
+   }
+   return num;
+}
+
 void printch(const char ch){
     _putc(ch);
 }
 
-void printint(const int dec){
+void printint(int num,int radix,int sign,char flag,int width,int precision){
+    //precision to be completed
+    if(flag&&flag!=0)
+        return ;
     if(dec==0)
         return ;
-    printint(dec/10);
-    _putc((char)(dec%10+'0'));
+    
+    static char digits[]="0123456789abcdef";
+    char buffer[1024];
+   
+    int negaflag=0;
+    uin32_t unum=num;
+    if(sign&&num<0){
+        negflag=1;
+        ux=-x;
+    }
+
+    int i=0;
+    do{
+        buffer[i++]=digits[unum%radix];
+    }while((ux/=radix)!=0);
+   
+    if(negaflag)
+        buffer[i++]='-';
+  
+    while(i<width)
+        buffer[i++]=(flag=='0'?'0':'1');
+   
+    while(--i>=0)
+        printch(buffer[i]);
 }
 
 void printstr(const char *ptr){
@@ -161,8 +200,13 @@ void printfloat(const float flt){
 }
 
 int printf(const char *fmt,... ){
+    
+    char flag;
+    int width,precision;
+   
     va_list ap;
     va_start(ap,fmt);
+
     while(*fmt){
        if(*fmt!='%'){
           _putc(*fmt);
@@ -170,28 +214,40 @@ int printf(const char *fmt,... ){
        }
        else{
           fmt++;
+          //checkpoints
+          if(is_flag(*fmt))
+             flag=*fmt++;
+          if(isdigit(*fmt))
+             width=get_int(&fmt);
+          
           switch(*fmt){
+             case '%': _putc('%');break;
              case 'c': {
                           char valch=va_arg(ap,int);
                           printch(valch);
                           fmt++;   
                           break;
-                       }
+                       } 
+             case 'D':
              case 'd': {
                           int valint=va_arg(ap,int);
-                          printint(valint);
+                          printint(valint,10,1,flag,width,precision);
                           fmt++;
                           break;
                        }
              case 'X':
              case 'x': {
                           int fdval=va_arg(ap,int);
-                          char str[30];
-                          myitoa(fdval,str,16);
-                          printint(fdval);
+                          printint(fdval,16,0,flag,width,precision);
                           fmt++;
                           break;
                        }
+             case 'O':
+             case 'o': { 
+                          int odval=va_arg(ap,int);
+                          printint(odval,8,0,flag,width,precision);
+                       }
+             case 'S':
              case 's': {
                           char *valstr=va_arg(ap,char*);
                           printstr(valstr);

@@ -13,7 +13,7 @@ char *itoa(int a){
    return p;
 }
 
-void  memcpy(char *dest,const char *src,size_t size){
+void memcpy(char *dest,const char *src,size_t size){
    //asm volatile ("cld; rep movsb" : : "c"(size),"S"(src),"D"(dest));  
    //assert(dest!=NULL&&src==NULL);
    //char *ret_val=dest;
@@ -82,7 +82,17 @@ int strncmp(const char *str1,const char *str2,size_t size){
     return 0;
 }
 
-
+char *strchr(const char *s,int ch){
+    if(s==NULL)
+       return NULL;
+    
+    while(*s){
+       if(*s++(char)ch)
+           return (Char *)s;
+       s++;
+    }
+    return NULL; 
+} 
 
 
 
