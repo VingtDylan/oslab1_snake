@@ -133,6 +133,12 @@ void kbd_event(_KbdReg *key){
 }
 
 void snake_move(){
+  usedx=snake.x[snake.length-1];
+  usedy=snake.y[snake.length-1];
+  for(int i=snake.length-1;i>=1;i--){
+     snake.x[i]=snake.x[i-1];
+     snake.y[i]=snake.y[i-1];
+  }
   switch(snake.direction){
      case up:   {
                     snake.y[0]+=snake.speed;
@@ -151,12 +157,7 @@ void snake_move(){
                 }
      default:break;
   } 
-  usedx=snake.x[snake.length-1];
-  usedy=snake.y[snake.length-1];
-  for(int i=snake.length-1;i>=0;i--){
-     snake.x[i]=snake.x[i-1];
-     snake.y[i]=snake.y[i-1];
-  }
+
 }
 
 void get_food(){
@@ -190,7 +191,7 @@ bool game_end(){
 
 void game_progress(){
   generate();
-  //snake_move();
+  snake_move();
   //get_food();
 }
 
@@ -248,6 +249,7 @@ void main_loop(){
           break;
       if(game_win)
           break;
+      printf("game is on");
       screen_update();
       next_frame+=1000/FPS;
     }
