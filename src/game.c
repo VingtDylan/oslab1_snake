@@ -110,7 +110,7 @@ void game_progress(){
 
 void screen_update(){
   uint32_t backgroundcolor=black;
-  //uint32_t snakecolor=darkgreen;
+  uint32_t snakecolor=darkgreen;
   
   if(!snake.alive)
       backgroundcolor=firebrick;
@@ -120,7 +120,7 @@ void screen_update(){
          draw_rect(&backgroundcolor,i,j,1,1);
          for(int k=0;k<snake.length;k++){
               if(snake.x[k]==i&&snake.y[k]==j)
-                   printf("snake body");//draw_rect(&snakecolor,i,j,1,1);
+                   draw_rect(&snakecolor,i+10,j,1,1);
          }
          
       }
