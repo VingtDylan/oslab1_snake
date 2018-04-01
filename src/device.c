@@ -76,7 +76,7 @@ _KbdReg *read_key() {
   if (!input)
     init_input();
 
-  _KbdReg pressed;
+  _KbdReg *pressed=NULL;
   input->read(_DEVREG_INPUT_KBD, &pressed, sizeof(pressed));
   return pressed;
 }
