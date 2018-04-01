@@ -131,40 +131,35 @@ void main_loop(){
   
    static int fps=30;
    
-
    init_screen(fps);      
    draw_screen(); 
-  
-   int num_draw=0;
-   int frames=0;
-   int key;
-
+   
+   //init_game();  
+   //int num_draw=0;
+   //int frames=0;
+   
    unsigned long next_frame=0;
-   unsigned long next_refresh=0;
+   //unsigned long next_refresh=0;
 
    while(1){
-      bool fresh=false;
+      //bool fresh=false;
       while(uptime()<next_frame);
-     
-      frames++; 
+      //frames++; 
    
-      if(uptime()>next_refresh){
-           fresh=true;
-           next_refresh+=1000/FPS;
-      }
+      //if(uptime()>next_refresh){
+      //     fresh=true;
+      //     next_refresh+=1000/FPS;
+      //}
       //next_frame+=1000/FPS;
-    
-      while((key=read_key())!=_KEY_NONE){
-         kbd_event(key);
-      } 
    
+      _KbdReg *key=read_key();
+      kbd_event(key); 
       game_progress();
-
-      if(fresh){
-         num_draw++;
-         set_fps(num_draw*100/uptime());
+      //if(fresh){
+        // num_draw++;
+        // set_fps(num_draw*100/uptime());
          screen_update();
-      }
+      //}
       next_frame+=1000/FPS;
     }
     return ;
