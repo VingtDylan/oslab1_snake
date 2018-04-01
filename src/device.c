@@ -60,10 +60,6 @@ void init_ata1(){
   ata1=get_device(_DEV_ATA1);
 }
 
-void writeb(_Device *dev, uint32_t reg, uint8_t res) {
-  dev->write(reg, &res, 1);
-}
-
 uint32_t uptime() {
   if (!timer) 
     init_timer();
@@ -142,7 +138,7 @@ uint32_t readl(_Device *dev,uint32_t reg){
 }
 
 void writeb(_Device *dev,uint32_t reg,uint8_t res){
-  dev->write(reg,%res,1);
+  dev->write(reg,&res,1);
 }
 
 void read_disk(void *dst, int offset) {
