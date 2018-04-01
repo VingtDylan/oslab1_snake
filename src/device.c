@@ -7,7 +7,7 @@
 #include <assert.h>
 
 /*parameter
-_DEV_PERFCNT  0x0000ac01
+_DEV_PERFCNT 0x0000ac01
 _DEV_INPUT   0x0000ac02
 _DEV_TIMER   0x0000ac03
 _DEV_VIDEO   0x0000ac04
