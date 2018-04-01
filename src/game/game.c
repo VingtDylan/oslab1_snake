@@ -61,12 +61,6 @@ void init_screen(int fps){
 void init_game(){
   snake.x[0]=screen.width/2;
   snake.y[0]=screen.height/2;
-  printf("%d",snake.length);
-  for(int i=1;i<snake.length;i++){
-     snake.x[i]=snake.x[i-1]+1;
-     snake.y[i]=snake.y[i-1];
-     printf("%d,%d",snake.x[i],snake.y[i]);
-  }
   snake.foods=0;
   snake.length=10;
   snake.speed=1;
@@ -74,6 +68,10 @@ void init_game(){
   snake.alive=true;
   foodflag=false;
   gameflag=true;
+  for(int i=1;i<snake.length;i++){
+     snake.x[i]=snake.x[i-1]+1;
+     snake.y[i]=snake.y[i-1];
+  }
 }
 
 void generate(){
