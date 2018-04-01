@@ -169,7 +169,8 @@ void main_loop(){
    
    init_screen(fps);
    init_game();      
-   draw_screen(); 
+   draw_screen();
+   screen_update(); 
    //int num_draw=0;
    //int frames=0;
    
