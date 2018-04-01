@@ -31,14 +31,6 @@
 #define HZ 100
 #define FPS 30
 
-#define EXIT_ERR(m)\
-do\
-{\
-   perror(m);\
-   exit(EXIT_FAILURE);\
-}\
-while(0)\
-
 static int real_fps;
 static int dida=0;
 
@@ -84,13 +76,13 @@ void main_loop(){
  
        str[i] = '*';  
        if(system("clear")!=0)
-          EXIT_ERR("clear!");  
+          printf("clear!");  
        printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
        //fflush(stdout);  
        //sleep(1);  
        printf("\n");  
        if(system("clear")!=0)
-          EXIT_ERR("clear!");  
+          printf("clear!");  
    }  
    printf("\033[0m");
 
