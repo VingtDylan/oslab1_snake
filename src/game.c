@@ -75,8 +75,8 @@ void draw_screen(){
      for(int y=0;y<100;y++){
          _FBCtlReg ctl;
          uint32_t pixels=0x00fa005f;
-         ctl.x=info.width/2-50+x;
-         ctl.y=info.height/2-50+y;
+         ctl.x=x;
+         ctl.y=y;
          ctl.w=ctl.h=1;
          ctl.sync=1;
          ctl.pixels=&pixels;
