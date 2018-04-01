@@ -229,7 +229,8 @@ void screen_update(){
 void main_loop(){ 
    static int fps=30;
    init_screen(fps);
-   init_game();      
+   init_game();     
+   printf("%d %d ",screen.height,screen.width); 
    //draw_screen();   
    for(int i=0;i<snake.length;i++)
        printf("%d %d",snake.x[i],snake.y[i]);
