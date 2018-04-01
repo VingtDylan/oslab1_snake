@@ -65,23 +65,9 @@ void init_screen(int fps){
 }
 
 void draw_screen(){
-  //_Device *dev=get_device(_DEV_VIDEO);
-  /*
-  for(int x=0;x<100;x++)
-     for(int y=0;y<100;y++){
-         _FBCtlReg ctl;
-         uint32_t pixels=0x00fa005f;
-         ctl.x=x+screen.width/2;
-         ctl.y=y+screen.height/2;
-         ctl.w=ctl.h=1;
-         ctl.sync=1;
-         ctl.pixels=&pixels;
-         dev->write(_DEVREG_VIDEO_FBCTL,&ctl,sizeof(ctl));
-     } 
-  }*/
   uint32_t pixel=0x00ff0000;
-  for(int x=0;x<500;x++)
-    for(int y=0;y<500;y++)
+  for(int x=0;x<320;x++)
+    for(int y=0;y<240;y++)
        draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
 }
 
