@@ -60,10 +60,9 @@ struct{
    int fy;
 }food[100];
 
-
-
 static int real_fps;
 static int dida=0;
+static int foo=0;
 
 void timer(void){
   dida++;
@@ -95,6 +94,12 @@ void init_game(){
   snake.alive=true;
 }
 
+void generate(){
+  food[foo].y=rand()%(screen.width);
+  food[foo].y=rand()%(screen.height);
+  foo++;
+}
+
 void draw_screen(){
   uint32_t pixel=firebrick;
   for(int x=0;x<150;x++)
@@ -110,15 +115,15 @@ void kbd_event(_KbdReg *key){
 }
 
 void game_progress(){
-
-
+  generate();
+  
   printf("to be completed\n");
 }
 
 void screen_update(){
   uint32_t backgroundcolor=lightgrey;
   uint32_t snakecolor=darkgreen;
-  
+  uint32_t foodcolor=deeppink;
   if(!snake.alive)
       backgroundcolor=firebrick;
  
@@ -137,6 +142,12 @@ void screen_update(){
              if(snake.x[k]==i&&snake.y[k]==j){
                    draw_rect(&snakecolor,i,j,1,1);
                    printf("body!\n");
+             }
+         }
+         for(int k=0;k<=foo;k++){
+             if(food[k].x>=i&&food[k].x<=i+4&&food[k].y>=j;food[k].y<=j+4){
+                  draw_rect(&foodcolor,i,j,1,1);
+                  printf("food!\n");
              }
          }
          
@@ -189,37 +200,37 @@ void main_loop(){
    init_screen(fps);
    init_game();      
    //draw_screen();
-   screen_update(); 
+    
    //int num_draw=0;
    //int frames=0;
    
-   //unsigned long next_frame=0;
+   unsigned long next_frame=0;
    //unsigned long next_refresh=0;
    
-   //while(1){
+   while(1){
       //bool fresh=false;
-     // while(uptime()<next_frame);
+       while(uptime()<next_frame);
       //frames++; 
    
       //if(uptime()>next_refresh){
       //     fresh=true;
       //     next_refresh+=1000/FPS;
       //}
-      //next_frame+=1000/FPS;
+       next_frame+=1000/FPS;
    
       //_KbdReg *key=read_key();
       //kbd_event(key); 
-      //game_progress();
+       game_progress();
       
       //if(fresh){
         // num_draw++;
         // set_fps(num_draw*100/uptime());
       
-     // screen_update();
+       screen_update();
      
-      //}
-      //next_frame+=1000/FPS;
-   // }
+      
+      next_frame+=1000/FPS;
+    }
     return ;
 }
 
