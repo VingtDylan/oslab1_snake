@@ -164,14 +164,14 @@ void get_food(){
 }
 
 bool game_end(){
+     printf("%d",gameflag);
      if(snake.x[0]<0||snake.x[0]>screen.width)
          gameflag=false;
      if(snake.y[0]<0||snake.y[0]>screen.height);
          gameflag=false;
      for(int i=1;i<snake.length;i++)
          if(snake.x[0]==snake.x[i]&&snake.y[0]==snake.y[i])
-             gameflag=false;
-     printf("%d\n",gameflag); 
+             gameflag=false; 
      if(!gameflag)
          return true;
      return false;
