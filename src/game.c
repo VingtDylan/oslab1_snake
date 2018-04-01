@@ -89,7 +89,7 @@ void init_game(){
   snake.x[0]=screen.width/2;//=snake.x[1]=1;
   snake.y[0]=screen.height/2;//=snake.y[1]=0;
   snake.foods=0;
-  snake.length=50;
+  snake.length=10;
   snake.speed=1;
   snake.direction=2;
   snake.alive=true;
@@ -131,7 +131,7 @@ void screen_update(){
       for(int j=0;j<screen.height;j++){
          draw_rect(&backgroundcolor,i,j,1,1);
          for(int i=0;i<snake.length;i++)
-              printf("%d %d",snake.x[i],snake.y[i]);
+              printf("%d %d\n",snake.x[i],snake.y[i]);
          
          for(int k=0;k<snake.length;k++){
               if(snake.x[k]==i&&snake.y[k]==j)
