@@ -65,9 +65,9 @@ void init_screen(int fps){
 }
 
 void draw_screen(){
-  uint32_t pixel=0x00ff0000;
-  for(int x=0;x<320;x++)
-    for(int y=0;y<240;y++)
+  uint32_t pixel=firebrick;
+  for(int x=0;x<150;x++)
+    for(int y=0;y<150;y++)
        draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
 }
 
