@@ -127,19 +127,19 @@ void kbd_event(_KbdReg *key){
 void snake_move(){
   switch(snake.direction){
      case up:   {
-                    snake.y[0]+=speed;
+                    snake.y[0]+=snake.speed;
                     break;
                 }
      case down: {
-                    snake.y[0]-=speed;
+                    snake.y[0]-=snake.speed;
                     break;
                 }
      case left: {
-                    snake.x[0]-=speed;
+                    snake.x[0]-=snake.speed;
                     break;
                 }
      case right:{ 
-                    snake.x[0]+=speed;
+                    snake.x[0]+=snake.speed;
                 }
      default:break;
   } 
@@ -152,7 +152,7 @@ void snake_move(){
 }
 
 void get_food(){
-  if(snake.x[0]==food[foo].rx&&snake.y[0]==food[foo].ry){
+  if(snake.x[0]==food[foo].fx&&snake.y[0]==food[foo].fy){
      foodflag=false;
      snake.foods++;
      snake.x[snake.length]=usedx;
@@ -219,6 +219,7 @@ void screen_update(){
 
 
 void main_loop(){ 
+   static int fps=30;
    init_screen(fps);
    init_game();      
    
