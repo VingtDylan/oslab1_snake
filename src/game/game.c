@@ -101,7 +101,7 @@ void kbd_event(_KbdReg *key){
   key->keydown=1;
   key->keycode=n%4+1;
   n++;
- 
+   
   if(key->keydown){
      switch(key->keycode){
         case _KEY_UP:     {
@@ -133,8 +133,9 @@ void kbd_event(_KbdReg *key){
                              printf("quit?\n");       
                              break;
                           }
-        default:  break;
+        default:  break;        
      }  
+     printf("pressed");
   }
 }
 
