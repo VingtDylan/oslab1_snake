@@ -6,11 +6,7 @@
 #include "type.h"
 #include "tool.h"
 
-#define M  4  
-#define maxn 256
-#define maxlen 512
-#define upper 1024
-
+//color
 #define lightgrey 0x00d3d3d3
 #define darkgreen 0x00006400
 #define firebrick 0x00b12222
@@ -70,8 +66,8 @@ void init_screen(int fps){
 }
 
 void init_game(){
-  snake.x[0]=screen.width/2;//=snake.x[1]=1;
-  snake.y[0]=screen.height/2;//=snake.y[1]=0;
+  snake.x[0]=screen.width/2;
+  snake.y[0]=screen.height/2;
   snake.foods=0;
   snake.length=10;
   snake.speed=1;
@@ -153,44 +149,20 @@ void screen_update(){
 
 
 void main_loop(){ 
-        
-   static int fps=30;
-   
+   static int fps=30; 
    init_screen(fps);
    init_game();      
-   //draw_screen();
-    
-   //int num_draw=0;
-   //int frames=0;
    
-   unsigned long next_frame=0;
-   //unsigned long next_refresh=0;
-   
+   unsigned long  next_frame=0;
+      
    while(1){
-      //bool fresh=false;
       while(uptime()<next_frame);
-      //frames++; 
-   
-      //if(uptime()>next_refresh){
-      //     fresh=true;
-      //     next_refresh+=1000/FPS;
-      //}
-       next_frame+=1000/FPS;
-   
-       _KbdReg *key=read_key();
-       kbd_event(key); 
-       game_progress();
-      
-      //if(fresh){
-        // num_draw++;
-        // set_fps(num_draw*100/uptime());
-      
-       screen_update();
-     
-      
-       next_frame+=1000/FPS;
+      _KbdReg *key=read_key();
+      kbd_event(key); 
+      game_progress();
+      screen_update();
+      next_frame+=1000/FPS;
     }
-    return ;
 }
 
 

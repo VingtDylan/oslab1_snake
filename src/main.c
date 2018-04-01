@@ -1,8 +1,7 @@
 #include <am.h>
 #include <amdev.h>
-#include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
+#include <lib.h>
 #include <assert.h>
 #include <game.h>
 #include <type.h>
