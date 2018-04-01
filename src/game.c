@@ -11,27 +11,10 @@
 #define maxlen 512
 #define upper 1024
 
-#define NONE                   "\033[m"   
-#define RED                    "\033[0;32;31m"   
-#define LIGHT_RED              "\033[1;31m"   
-#define GREEN                  "\033[0;32;32m"   
-#define LIGHT_GREEN            "\033[1;32m"   
-#define BLUE                   "\033[0;32;34m"   
-#define LIGHT_BLUE             "\033[1;34m"   
-#define DARY_GRAY              "\033[1;30m"   
-#define CYAN                   "\033[0;36m"   
-#define LIGHT_CYAN             "\033[1;36m"   
-#define PURPLE                 "\033[0;35m"   
-#define LIGHT_PURPLE           "\033[1;35m"   
-#define BROWN                  "\033[0;33m"   
-#define YELLOW                 "\033[1;33m"   
-#define LIGHT_GRAY             "\033[0;37m"   
-#define WHITE                  "\033[1;37m"
-
 #define lightgrey 0x00d3d3d3
 #define darkgreen 0x00006400
 #define firebrick 0x00b12222
-#define deeppink  0x00cd1076
+#define deeppink  0x00ff1493
 
 //direction
 #define left  1
@@ -144,7 +127,7 @@ void screen_update(){
       snake.x[i]=snake.x[i-1]+1;
       snake.y[i]=snake.y[i-1];
   }
-  printf("%d,%d",screen.width,screen.height);
+  //printf("%d,%d",screen.width,screen.height);
   for(int i=0;i<screen.width;i++){
       for(int j=0;j<screen.height;j++){
          draw_rect(&backgroundcolor,i,j,1,1);
@@ -170,44 +153,7 @@ void screen_update(){
 
 
 void main_loop(){ 
-      
-   char str[M] = {0};  
-   int i = 0;  
-   char symbol[4] = {'|','/','-','\\'};  
-   for(i = 0; i<M; ++i)  
-   {  
-       int c = i%5;  
-       switch(c)  
-       {  
-           case 0:  
-               printf(RED);  
-               break;  
-           case 1:  
-               printf(GREEN);  
-               break;  
-           case 2:  
-               printf(BLUE);  
-               break;  
-           case 3:  
-               printf(YELLOW);  
-               break;  
-           case 4:  
-               printf(BROWN);  
-               break;  
-       }  
- 
-       str[i] = '*';  
-       /*if(system("clear")!=0)
-          printf("clear!");*/  
-       printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
-       //fflush(stdout);  
-       //sleep(1);  
-       printf("\n");  
-       /*if(system("clear")!=0)
-          printf("clear!");*/  
-   }  
-   printf("\033[0m");
-  
+        
    static int fps=30;
    
    init_screen(fps);
