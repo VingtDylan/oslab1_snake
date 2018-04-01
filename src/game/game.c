@@ -176,7 +176,7 @@ bool game_end(){
      for(int i=1;i<snake.length;i++){
          if((snake.x[0]==snake.x[i])&&(snake.y[0]==snake.y[i])){
              gameflag=false; 
-             printf("%d %d %d %d %d",i,snake.x[i],snake.x[0],snake.y[i],snake.y[0]);
+             //printf("%d %d %d %d %d",i,snake.x[i],snake.x[0],snake.y[i],snake.y[0]);
          }
      }
      if(!gameflag)
