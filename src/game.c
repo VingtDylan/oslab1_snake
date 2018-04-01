@@ -80,12 +80,12 @@ void init_screen(int fps){
 }
 
 void init_game(){
-  snake->x[0]=snake->x[1]=1;
-  snake->y[0]=snake->y[1]=0;
-  snake->foods=0;
-  snake->length=2;
-  snake->speed=1;
-  snake->alive=1;
+  snake.x[0]=snake.x[1]=1;
+  snake.y[0]=snake.y[1]=0;
+  snake.foods=0;
+  snake.length=2;
+  snake.speed=1;
+  snake.alive=1;
 }
 
 void draw_screen(){
@@ -119,7 +119,7 @@ void screen_update(){
       for(int j=0;j<screen.height,j++){
          draw_rect(&backgroundcolor,i,j,1,1);
          for(int k=0;k<snake.length;k++){
-              if(snake[k]==i&&snake[k]==j)
+              if(snake.x[k]==i&&snake.y[k]==j)
                    draw_rect(&snakecolor,i,j,1,1);
          }
       }
