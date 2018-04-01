@@ -1,7 +1,6 @@
 #include "game.h"
-#include "string.h"
 #include "stdio.h"
-#include "stdlib.h"
+#include "lib.h"
 #include "am.h"
 #include "amdev.h"
 #include "unistd.h"
@@ -31,6 +30,12 @@
 #define HZ 100
 #define FPS 30
 
+struct{
+   int FPS;
+   int height,width;
+   int next_frame;
+}screen;
+
 static int real_fps;
 static int dida=0;
 
@@ -46,6 +51,13 @@ int get_fps(){
   return real_fps;
 }
 
+void init_screen(FPS){
+  screen.FPS=FPS;
+  //screen.height=screen_width();
+  //screen.width=screen_height();
+  screen.next_frame=0;
+  printf("screen updated!");
+}
 
 void main_loop(){ 
       
