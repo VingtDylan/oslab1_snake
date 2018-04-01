@@ -64,6 +64,8 @@ static int real_fps;
 static int dida=0;
 static int foo=0;
 
+bool foodflag;
+
 void timer(void){
   dida++;
 }
@@ -92,12 +94,16 @@ void init_game(){
   snake.speed=1;
   snake.direction=2;
   snake.alive=true;
+  foodflag=false;
 }
 
 void generate(){
+  if(foodflag)
+      return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
+  foodflag=true;
 }
 
 void draw_screen(){
@@ -148,13 +154,13 @@ void screen_update(){
          for(int k=0;k<snake.length;k++){
              if(snake.x[k]==i&&snake.y[k]==j){
                    draw_rect(&snakecolor,i,j,1,1);
-                   printf("body!\n");
+                   //printf("body!\n");
              }
          }
          for(int k=0;k<=foo;k++){
              if(food[k].fx>=i&&food[k].fx<=i+4&&food[k].fy>=j&&food[k].fy<=j+4){
                   draw_rect(&foodcolor,i,j,1,1);
-                  printf("food!\n");
+                  //printf("food!\n");
              }
          }
          
