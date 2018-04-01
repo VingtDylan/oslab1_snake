@@ -15,6 +15,7 @@ int printf(const char *fmt, ...) {
   return 0;
 }
 
+/*
 static void input_test(_Device *dev);
 static void timer_test(_Device *dev);
 static void video_test(_Device *dev);
@@ -119,4 +120,5 @@ static void ata_test(_Device *dev) {
     printf("\n");
   }
 }
+*/
 
