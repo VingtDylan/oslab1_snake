@@ -82,7 +82,7 @@ void generate(){
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
-  if(foo==10)
+  if(foo==30)
       game_win=true;
   //foodflag=true;
 }
@@ -243,13 +243,12 @@ void main_loop(){
    while(1){
       while(uptime()<next_frame);
       _KbdReg *key=read_key();
-      kbd_event(key); 
-      game_progress();
+      //kbd_event(key); 
+      //game_progress();
       //if(game_end())
           //break;
       if(game_win)
           break;
-      printf("game is on");
       screen_update();
       next_frame+=1000/FPS;
     }
