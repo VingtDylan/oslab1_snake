@@ -33,6 +33,12 @@
 #define firebrick 0x00b12222
 #define deeppink  0x00cd1076
 
+//direction
+#define left  1
+#define right 2
+#define up    3
+#define down  4
+
 struct{
    int fps;
    int height,width;
@@ -80,12 +86,13 @@ void init_screen(int fps){
 }
 
 void init_game(){
-  snake.x[0]=snake.x[1]=1;
-  snake.y[0]=snake.y[1]=0;
+  snake.x[0]=50;//=snake.x[1]=1;
+  snake.y[0]=50;//=snake.y[1]=0;
   snake.foods=0;
-  snake.length=2;
+  snake.length=50;
   snake.speed=1;
-  snake.alive=1;
+  snake.direction=2;
+  snake.alive=true;
 }
 
 void draw_screen(){
@@ -115,12 +122,17 @@ void screen_update(){
   if(!snake.alive)
       backgroundcolor=firebrick;
  
+  for(int i=1;i<snake.length;i++){
+      snake.x[i]=snake.x[i-1]+1;
+      snake.y[i]=snake.y[i];
+  }
+
   for(int i=0;i<screen.width;i++)
       for(int j=0;j<screen.height;j++){
          draw_rect(&backgroundcolor,i,j,1,1);
          for(int k=0;k<snake.length;k++){
               if(snake.x[k]==i&&snake.y[k]==j)
-                   draw_rect(&snakecolor,i+10,j,1,1);
+                   draw_rect(&snakecolor,i,j,1,1);
          }
          
       }
