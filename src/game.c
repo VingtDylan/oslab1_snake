@@ -39,22 +39,15 @@ struct{
    int fy;
 }food[100];
 
-static int real_fps;
 static int dida=0;
 static int foo=0;
+static int usedx,usedy;
 
 bool foodflag;
+bool gameflag;
 
 void timer(void){
   dida++;
-}
-
-void set_fps(int value){
-  real_fps=value;
-}
-
-int get_fps(){
-  return real_fps;
 }
 
 void init_screen(int fps){
@@ -74,11 +67,12 @@ void init_game(){
   snake.direction=2;
   snake.alive=true;
   foodflag=false;
+  gameflag=true;
 }
 
 void generate(){
-  //if(foodflag)
-    //  return ;
+  if(foodflag)
+      return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
@@ -96,20 +90,96 @@ void draw_screen(){
 void kbd_event(_KbdReg *key){
   if(key->keydown){
      switch(key->keycode){
-        case _KEY_UP:     printf("Up key!\b");     break;
-        case _KEY_DOWN:   printf("Down key!\n");   break;
-        case _KEY_LEFT:   printf("Left key!\n");   break;
-        case _KEY_RIGHT:  printf("Right key!\n");  break;
-        case _KEY_Q:      printf("quit?\n");       break;
+        case _KEY_UP:     {
+                             if(snake.direction!=down)
+                                   snake.direction=up;
+                             printf("Up key!\b");     
+                             break;
+                          }
+        case _KEY_DOWN:   {
+                             if(snake.direction!=up)
+                                   snake.direction=down;
+                             printf("Down key!\n");   
+                             break;
+                          }
+        case _KEY_LEFT:   {
+                             if(snake.direction!=right)
+                                   snake.direction=left;
+                             printf("Left key!\n");   
+                             break;
+                          }
+        case _KEY_RIGHT:  {
+                             if(snake.direction!=left)
+                                   snake.direction=right;
+                             printf("Right key!\n"); 
+                             break;
+                          }
+        case _KEY_Q:      {
+                             gameflag=false;
+                             printf("quit?\n");       
+                             break;
+                          }
         default:  break;
      }  
   }
 }
 
+void snake_move(){
+  switch(snake.direction){
+     case up:   {
+                    snake.y[0]+=speed;
+                    break;
+                }
+     case down: {
+                    snake.y[0]-=speed;
+                    break;
+                }
+     case left: {
+                    snake.x[0]-=speed;
+                    break;
+                }
+     case right:{ 
+                    snake.x[0]+=speed;
+                }
+     default:break;
+  } 
+  usedx=snake.x[snake.length-1];
+  usedy=snake.y[snake.length-1];
+  for(int i=snake.length-1;i>=0;i--){
+     snake.x[i]=snake.x[i-1];
+     snake.y[i]=snake.y[i-1];
+  }
+}
+
+void get_food(){
+  if(snake.x[0]==food[foo].rx&&snake.y[0]==food[foo].ry){
+     foodflag=false;
+     snake.foods++;
+     snake.x[snake.length]=usedx;
+     snake.y[snake.length]=usedy;
+     snake.length++;
+  }  
+  else
+     return ;
+}
+
+bool game_end(){
+     if(snake.x[0]<0||snake.x[0]>screen.width)
+         gameflag=false;
+     if(snake.y[0]<0||snake.y[0]>screen.height);
+         gameflag=false;
+     for(int i=1;i<snake.length;i++)
+         if(snake.x[0]==snake.x[i]&&snake.y[0]==snake.y[i])
+             gameflag=false;
+     if(!gameflag)
+         return true;
+     return false;
+}
+
 void game_progress(){
   generate();
-  
-  //printf("to be completed\n");
+  snake_move();
+  get_food();
 }
 
 void screen_update(){
@@ -149,7 +219,6 @@ void screen_update(){
 
 
 void main_loop(){ 
-   static int fps=30; 
    init_screen(fps);
    init_game();      
    
@@ -157,9 +226,11 @@ void main_loop(){
       
    while(1){
       while(uptime()<next_frame);
-      _KbdReg *key=read_key();
-      kbd_event(key); 
+      //_KbdReg *key=read_key();
+      //kbd_event(key); 
       game_progress();
+      if(game_end())
+          break;
       screen_update();
       next_frame+=1000/FPS;
     }
