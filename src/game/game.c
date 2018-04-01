@@ -156,7 +156,7 @@ void snake_move(){
 }
 
 void get_food(){
-  if(snake.x[0]==food[foo].fx&&snake.y[0]==food[foo].fy){
+  if(snake.x[0]==food[foo-1].fx&&snake.y[0]==food[foo-1].fy){
      foodflag=false;
      snake.foods++;
      snake.x[snake.length]=usedx;
@@ -185,8 +185,8 @@ bool game_end(){
 
 void game_progress(){
   generate();
-  snake_move();
-  get_food();
+  //snake_move();
+  //get_food();
 }
 
 void screen_update(){
@@ -210,7 +210,6 @@ void screen_update(){
              if(snake.x[k]>=i&&snake.x[k]<=i+4&&snake.y[k]>=j&&snake.y[k]<=j+4){
                    draw_rect(&snakecolor,i,j,1,1);
                    //printf("body!\n");
-                   printf("%d\n",snake.length);
              }
          }
          for(int k=0;k<=foo;k++){
