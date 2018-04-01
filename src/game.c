@@ -79,8 +79,8 @@ int get_fps(){
 
 void init_screen(int fps){
   screen.fps=fps;
-  screen.height=screen_width();
-  screen.width=screen_height();
+  screen.height=screen_height();
+  screen.width=screen_width();
   screen.next_frame=0;
   printf("screen updated!");
 }
@@ -124,7 +124,7 @@ void screen_update(){
  
   for(int i=1;i<snake.length;i++){
       snake.x[i]=snake.x[i-1]+1;
-      snake.y[i]=snake.y[i];
+      snake.y[i]=snake.y[i-1];
   }
 
   for(int i=0;i<screen.width;i++)
@@ -132,11 +132,11 @@ void screen_update(){
          //draw_rect(&backgroundcolor,i,j,1,1);
          for(int i=0;i<snake.length;i++)
               printf("%d %d\n",snake.x[i],snake.y[i]);
-         
-         //for(int k=0;k<snake.length;k++){
-           //   if(snake.x[k]==i&&snake.y[k]==j)
+ 
+         for(int k=0;k<snake.length;k++){
+             if(snake.x[k]==i&&snake.y[k]==j)
                    draw_rect(&snakecolor,i,j,1,1);
-         //}
+         }
          
       }
 }
