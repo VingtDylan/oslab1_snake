@@ -81,7 +81,7 @@ void read_key(int *key, int *down) {
     *down = pressed.keydown;
 }
 
-void draw_rect(uint32_t pixels, int x, int y, int w, int h) {
+void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
   if (!video) 
     init_video();
   
