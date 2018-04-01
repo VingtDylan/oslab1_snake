@@ -16,19 +16,20 @@
 }
 */
 
-//static void input_test(_Device *dev);
-//static void timer_test(_Device *dev);
-//static void video_test(_Device *dev);
-//static void pciconf_test(_Device *dev);
-//static void ata_test(_Device *dev);
+static void input_test(_Device *dev);
+static void timer_test(_Device *dev);
+static void video_test(_Device *dev);
+static void pciconf_test(_Device *dev);
+static void ata_test(_Device *dev);
 
 int main() {
-  /*
+  
   if (_ioe_init() != 0) _halt(1);
   printf("_heap = [%08x, %08x)\n", _heap.start, _heap.end);
   for (int n = 1; ; n++) {
     _Device *dev = _device(n);
     if (!dev) break;
+    printf("%d\n............",n);
     printf("* Device: %s\n", dev->name);
     switch (dev->id) {
       case _DEV_INPUT: input_test(dev); break;
@@ -38,12 +39,13 @@ int main() {
       case _DEV_ATA0: ata_test(dev); break;
     }
     printf("\n");
-  }*/
+  }
+
   main_loop();
   return 0;
 } 
 
-/*
+
 static void input_test(_Device *dev) {
   printf("Input device test skipped.\n");
 }
@@ -142,4 +144,4 @@ static void ata_test(_Device *dev) {
     printf("\n");
   }
 }
-*/
+
