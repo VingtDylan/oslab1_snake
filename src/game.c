@@ -122,7 +122,7 @@ void kbd_event(_KbdReg *key){
         case _KEY_LEFT:   printf("Left key!\n");   break;
         case _KEY_RIGHT:  printf("Right key!\n");  break;
         case _KEY_Q:      printf("quit?\n");       break;
-        default:          printf("???");           break;
+        default:  break;
      }  
   }
 }
@@ -130,7 +130,7 @@ void kbd_event(_KbdReg *key){
 void game_progress(){
   generate();
   
-  printf("to be completed\n");
+  //printf("to be completed\n");
 }
 
 void screen_update(){
