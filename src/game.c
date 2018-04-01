@@ -28,9 +28,7 @@
 #define LIGHT_GRAY             "\033[0;37m"   
 #define WHITE                  "\033[1;37m"
 
-#define HZ 100
-#define FPS 30
-
+#define black     0x00000000
 #define darkgreen 0x00006400
 #define firebrick 0x00b12222
 #define deeppink  0x00cd1076
@@ -40,6 +38,23 @@ struct{
    int height,width;
    int next_frame;
 }screen;
+
+struct{
+   int x[100];
+   int y[100];
+   int foods;
+   int length;
+   int speed;
+   int direction;
+   bool alive;
+}snake;
+
+struct{
+   int fx;
+   int fy;
+}food[100];
+
+
 
 static int real_fps;
 static int dida=0;
@@ -64,6 +79,15 @@ void init_screen(int fps){
   printf("screen updated!");
 }
 
+void init_game(){
+  snake->x[0]=snake->x[1]=1;
+  snake->y[0]=snake->y[1]=0;
+  snake->foods=0;
+  snake->length=2;
+  snake->speed=1;
+  snake->alive=1;
+}
+
 void draw_screen(){
   uint32_t pixel=firebrick;
   for(int x=0;x<150;x++)
@@ -85,8 +109,20 @@ void game_progress(){
 }
 
 void screen_update(){
+  uint32_t backgroundcolor=black;
+  uint32_t snakecolor=green;
   
-  printf("to be completed!\n");
+  if(!alive)
+      backgroundcolor=firebrick;
+ 
+  for(int i=0;i<screen.width;i++)
+      for(int j=0;j<screen.height,j++){
+         draw_rect(&backgroundcolor,i,j,1,1);
+         for(int k=0;k<snake.length;k++){
+              if(snake[k]==i&&snake[k]==j)
+                   draw_rect(&snakecolor,i,j,1,1);
+         }
+      }
 }
 
 
@@ -131,10 +167,9 @@ void main_loop(){
   
    static int fps=30;
    
-   init_screen(fps);      
+   init_screen(fps);
+   init_game();      
    draw_screen(); 
-   
-   //init_game();  
    //int num_draw=0;
    //int frames=0;
    
@@ -153,12 +188,15 @@ void main_loop(){
       //next_frame+=1000/FPS;
    
       _KbdReg *key=read_key();
-      kbd_event(key); 
-      game_progress();
+      //kbd_event(key); 
+      //game_progress();
+      
       //if(fresh){
         // num_draw++;
         // set_fps(num_draw*100/uptime());
-         screen_update();
+      
+      screen_update();
+     
       //}
       next_frame+=1000/FPS;
     }
