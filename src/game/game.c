@@ -233,8 +233,8 @@ void main_loop(){
       //_KbdReg *key=read_key();
       //kbd_event(key); 
       game_progress();
-      if(game_end())
-          break;
+      //if(game_end())
+        //  break;
       screen_update();
       next_frame+=1000/FPS;
     }
