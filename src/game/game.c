@@ -94,8 +94,14 @@ void draw_screen(){
        draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
 }
 
+static int n=0;
 
 void kbd_event(_KbdReg *key){
+  
+  key->keydown=1;
+  key->keycode=n%4+1;
+  n++;
+ 
   if(key->keydown){
      switch(key->keycode){
         case _KEY_UP:     {
