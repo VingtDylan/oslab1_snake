@@ -8,6 +8,8 @@
 #include <type.h>
 
 // TODO: implement necessary libraries
+
+/*
 int printf(const char *fmt, ...) {
   for (; *fmt; fmt++) {
     _putc(*fmt);
@@ -15,7 +17,7 @@ int printf(const char *fmt, ...) {
   return 0;
 }
 
-/*
+
 static void input_test(_Device *dev);
 static void timer_test(_Device *dev);
 static void video_test(_Device *dev);
