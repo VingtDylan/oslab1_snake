@@ -66,7 +66,8 @@ void init_screen(int fps){
 
 void draw_screen(){
   _VideoInfoReg info;
-  _Device *dev=get_device(_DEV_VIDEO);
+  //_Device *dev=_device(_DEV_VIDEO);
+  //_Device *dev=get_device(_DEV_VIDEO);
   dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
   printf("have a test!\n");
   
@@ -133,7 +134,7 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);   
    
-   //draw_screen(); 
+   draw_screen(); 
   
    /*int num_draw=0;
    int frames=0;
