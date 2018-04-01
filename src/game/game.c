@@ -245,8 +245,8 @@ void main_loop(){
       //_KbdReg *key=read_key();
       //kbd_event(key); 
       game_progress();
-      if(game_end())
-          break;
+      //if(game_end())
+          //break;
       if(game_win)
           break;
       printf("game is on");
