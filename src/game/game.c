@@ -61,6 +61,10 @@ void init_screen(int fps){
 void init_game(){
   snake.x[0]=screen.width/2;
   snake.y[0]=screen.height/2;
+  for(int i=1;i<snake.length;i++){
+     snake.x[i]=snake.x[i-1]+1;
+     snake.y[i]=snake.y[i-1];
+  }
   snake.foods=0;
   snake.length=10;
   snake.speed=1;
