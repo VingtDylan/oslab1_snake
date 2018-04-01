@@ -99,7 +99,7 @@ static int n=0;
 void kbd_event(_KbdReg *key){
   
   key->keydown=1;
-  key->keycode=n%4+1;
+  key->keycode=n%4+73;
   n++;
   printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
    
