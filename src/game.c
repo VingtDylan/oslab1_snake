@@ -110,13 +110,13 @@ void game_progress(){
 
 void screen_update(){
   uint32_t backgroundcolor=black;
-  uint32_t snakecolor=green;
+  uint32_t snakecolor=darkgreen;
   
-  if(!alive)
+  if(!snake.alive)
       backgroundcolor=firebrick;
  
   for(int i=0;i<screen.width;i++)
-      for(int j=0;j<screen.height,j++){
+      for(int j=0;j<screen.height;j++){
          draw_rect(&backgroundcolor,i,j,1,1);
          for(int k=0;k<snake.length;k++){
               if(snake.x[k]==i&&snake.y[k]==j)
@@ -175,7 +175,7 @@ void main_loop(){
    
    unsigned long next_frame=0;
    //unsigned long next_refresh=0;
-
+   
    while(1){
       //bool fresh=false;
       while(uptime()<next_frame);
@@ -187,7 +187,7 @@ void main_loop(){
       //}
       //next_frame+=1000/FPS;
    
-      _KbdReg *key=read_key();
+      //_KbdReg *key=read_key();
       //kbd_event(key); 
       //game_progress();
       
