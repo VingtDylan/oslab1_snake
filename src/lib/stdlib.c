@@ -1,6 +1,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <srrno.h>
+#include <errno.h>
 #include <unistd.h>
 
 static int seed=0;
