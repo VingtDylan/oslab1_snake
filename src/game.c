@@ -62,6 +62,7 @@ void init_screen(int fps){
 
 void draw_screen(){
   _VideoInfoReg info;
+  _Device *dev=get_device(_DEV_VIDEO);
   dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
   printf("have a test!\n");
  
