@@ -39,12 +39,12 @@ struct{
    int fps;
    int height,width;
    int next_frame;
-}filefilm;
+}screen;
+
+screen myscreen;
 
 static int real_fps;
 static int dida=0;
-
-filefilm screen;
 
 void timer(void){
   dida++;
@@ -59,10 +59,10 @@ int get_fps(){
 }
 
 void init_screen(int fps){
-  screen.fps=fps;
-  screen.height=screen_width();
-  screen.width=screen_height();
-  screen.next_frame=0;
+  myscreen.fps=fps;
+  myscreen.height=screen_width();
+  myscreen.width=screen_height();
+  myscreen.next_frame=0;
   printf("screen updated!");
 }
 
@@ -77,8 +77,8 @@ void draw_screen(){
      for(int y=0;y<100;y++){
          _FBCtlReg ctl;
          uint32_t pixels=0x00fa005f;
-         ctl.x=x+screen.width/2;
-         ctl.y=y+screen.height/2;
+         ctl.x=x+myscreen.width/2;
+         ctl.y=y+myscreen.height/2;
          ctl.w=ctl.h=1;
          ctl.sync=1;
          ctl.pixels=&pixels;
@@ -132,8 +132,7 @@ void main_loop(){
    printf("\033[0m");
   
    static int fps=30;
-   init_screen(fps);   
-   
+   init_screen(fps);      
    draw_screen(); 
   
    /*int num_draw=0;
