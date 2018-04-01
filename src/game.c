@@ -130,12 +130,14 @@ void screen_update(){
   for(int i=0;i<screen.width;i++)
       for(int j=0;j<screen.height;j++){
          //draw_rect(&backgroundcolor,i,j,1,1);
-         for(int i=0;i<snake.length;i++)
-              printf("%d %d\n",snake.x[i],snake.y[i]);
+         for(int k=0;k<snake.length;k++)
+              printf("%d %d\n",snake.x[k],snake.y[k]);
  
          for(int k=0;k<snake.length;k++){
-             if(snake.x[k]==i&&snake.y[k]==j)
+             if(snake.x[k]==i&&snake.y[k]==j){
                    draw_rect(&snakecolor,i,j,1,1);
+                   printf("body!\n");
+             }
          }
          
       }
