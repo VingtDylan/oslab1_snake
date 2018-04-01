@@ -86,7 +86,7 @@ void main_loop(){
    }  
    printf("\033[0m");
 
-   
+   init_screen();   
 
    /*int num_draw=0;
    int frames=0;

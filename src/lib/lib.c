@@ -1,8 +1,14 @@
-#include "am.h"
-#include "stdio.h"
-#include "string.h"
-#include "stdarg.h"
-#include "stdlib.h"
+
+static int seed=0;
+
+void srand(unsigned int newseed){
+  seed=newseed;
+}
+
+int rand(void){
+  seed=0x01234567*seed+1;
+  return (seed>>17)&0x7FFF;
+}
 
 char *itoa(int a){
    static char buf[30];
@@ -14,9 +20,6 @@ char *itoa(int a){
 }
 
 void memcpy(char *dest,const char *src,size_t size){
-   //asm volatile ("cld; rep movsb" : : "c"(size),"S"(src),"D"(dest));  
-   //assert(dest!=NULL&&src==NULL);
-   //char *ret_val=dest;
    if(dest>=src&&dest<=src+size-1){
        dest=dest+size-1;
        src=src+size-1;
@@ -31,7 +34,7 @@ void memcpy(char *dest,const char *src,size_t size){
 }
 
 /*void memset(void *dest,int data,size_t size){
-   asm volatile ("cld; rep stosb" : : "c"(size),"a"(data),"D"(dest));
+   
 }
 */
 
@@ -43,7 +46,7 @@ size_t strlen(const char *str){
 }
 
 char *strcpy(char *dest,const char *src){
-    //assert(dest!=NULL&&src!=NULL);
+
     char *ret_val=dest;
     memcpy(dest,src,strlen(src)+1);
     return ret_val;
@@ -93,21 +96,5 @@ char *strchr(const char *s,int ch){
     }
     return NULL; 
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
