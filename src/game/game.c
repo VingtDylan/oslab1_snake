@@ -230,7 +230,7 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);
    init_game();      
-   //draw_screen();   
+   draw_screen();   
    unsigned long  next_frame=0;
       
    while(1){
