@@ -119,8 +119,8 @@ void screen_update(){
 //  uint32_t backgroundcolor=black;
   uint32_t snakecolor=darkgreen;
   
-  if(!snake.alive)
-      backgroundcolor=firebrick;
+  //if(!snake.alive)
+  //    backgroundcolor=firebrick;
  
   for(int i=1;i<snake.length;i++){
       snake.x[i]=snake.x[i-1]+1;
