@@ -117,11 +117,11 @@ void screen_update(){
  
   for(int i=0;i<screen.width;i++)
       for(int j=0;j<screen.height;j++){
-         draw_rect(&backgroundcolor,i,j,1,1);
          for(int k=0;k<snake.length;k++){
               if(snake.x[k]==i&&snake.y[k]==j)
-                   draw_rect(&snakecolor,i,j,1,1);
+                   printf("snake body');//draw_rect(&snakecolor,i,j,1,1);
          }
+         
       }
 }
 
@@ -169,7 +169,7 @@ void main_loop(){
    
    init_screen(fps);
    init_game();      
-   draw_screen();
+   //draw_screen();
    screen_update(); 
    //int num_draw=0;
    //int frames=0;
