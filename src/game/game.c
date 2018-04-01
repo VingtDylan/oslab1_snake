@@ -244,7 +244,7 @@ void main_loop(){
       while(uptime()<next_frame);
       //_KbdReg *key=read_key();
       //kbd_event(key); 
-      //game_progress();
+      game_progress();
       //if(game_end())
           //break;
       if(game_win)
