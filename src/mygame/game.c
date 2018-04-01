@@ -5,7 +5,6 @@
 #include "am.h"
 #include "amdev.h"
 #include "unistd.h"
-#include "stdlib.h"
 
 #define M  4  
 #define maxn 256
@@ -84,14 +83,14 @@ void main_loop(){
        }  
  
        str[i] = '*';  
-       //if(system("clear")!=0)
-          //EXIT_ERR("clear!");  
+       if(system("clear")!=0)
+          EXIT_ERR("clear!");  
        printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
        //fflush(stdout);  
        //sleep(1);  
        printf("\n");  
-       //if(system("clear")!=0)
-          //EXIT_ERR("clear!");  
+       if(system("clear")!=0)
+          EXIT_ERR("clear!");  
    }  
    printf("\033[0m");
 
