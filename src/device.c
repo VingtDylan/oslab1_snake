@@ -141,7 +141,7 @@ uint32_t readl(_Device *dev,uint32_t reg){
   return res;
 }
 
-void writeb(_Device *dev,uint32_t reg,uint8_tres){
+void writeb(_Device *dev,uint32_t reg,uint8_t res){
   dev->write(reg,%res,1);
 }
 
@@ -151,7 +151,7 @@ void read_disk(void *dst, int offset) {
 
   while ((readb(ata0, _DEVREG_ATA_STATUS) & 0xc0) != 0x40);
   writeb(ata0, _DEVREG_ATA_NSECT,  1);
-  writeb(ata0, _DEVREG_ATA_SECT,   offset);
+  writeb(ata0, _DEVREG_ATA_SECT,  offset);
   writeb(ata0, _DEVREG_ATA_CYLOW,  offset >> 8);
   writeb(ata0, _DEVREG_ATA_CYHIGH, offset >> 16);
   writeb(ata0, _DEVREG_ATA_DRIVE,  (offset >> 24) | 0xe0);
