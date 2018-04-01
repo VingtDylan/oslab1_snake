@@ -166,9 +166,9 @@ void main_loop(){
    unsigned long next_frame=0;
    //unsigned long next_refresh=0;
    
-   while(1){
+   //while(1){
       //bool fresh=false;
-       while(uptime()<next_frame);
+      // while(uptime()<next_frame);
       //frames++; 
    
       //if(uptime()>next_refresh){
@@ -189,7 +189,7 @@ void main_loop(){
      
       
       next_frame+=1000/FPS;
-    }
+    //}
     return ;
 }
 
