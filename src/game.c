@@ -73,7 +73,7 @@ void draw_screen(){
   uint32_t pixel=0x00ff0000;
   for(int x=0;x<100;x++)
     for(int y=0;y<100;y++)
-       draw_rect(&pixel,x+info.width/2-50,y+info.height/2-50,1,1);
+       draw_rect(pixel,x+info.width/2-50,y+info.height/2-50,1,1);
 }
 
 void main_loop(){ 
