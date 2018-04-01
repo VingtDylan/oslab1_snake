@@ -72,7 +72,7 @@ void draw_screen(){
 }
 
 
-void kbd_event(){
+void kbd_event(_KbdReg *key){
   
   //
   printf("in work\n");
@@ -146,7 +146,7 @@ void main_loop(){
       bool fresh=false;
       while(uptime()<next_frame);
      
-      //frames++; 
+      frames++; 
    
       if(uptime()>next_refresh){
            fresh=true;

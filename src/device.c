@@ -72,16 +72,13 @@ uint32_t uptime() {
   return boottime.lo;
 }
 
-void read_key(int *key, int *down) {
+_KbdReg *read_key() {
   if (!input)
     init_input();
 
   _KbdReg pressed;
   input->read(_DEVREG_INPUT_KBD, &pressed, sizeof(pressed));
-  if (key)
-    *key = pressed.keycode;
-  if (down)
-    *down = pressed.keydown;
+  return pressed;
 }
 
 void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
