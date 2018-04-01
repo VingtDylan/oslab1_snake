@@ -81,8 +81,8 @@ void init_game(){
 }
 
 void generate(){
-  if(foodflag)
-      return ;
+  //if(foodflag)
+    //  return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
@@ -177,8 +177,8 @@ void main_loop(){
       //}
        next_frame+=1000/FPS;
    
-       //_KbdReg *key=read_key();
-       //kbd_event(key); 
+       _KbdReg *key=read_key();
+       kbd_event(key); 
        game_progress();
       
       //if(fresh){
@@ -188,7 +188,7 @@ void main_loop(){
        screen_update();
      
       
-      next_frame+=1000/FPS;
+       next_frame+=1000/FPS;
     }
     return ;
 }
