@@ -169,9 +169,10 @@ bool game_end(){
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
      for(int i=1;i<snake.length;i++){
-         if(snake.x[0]==snake.x[i]&&snake.y[0]==snake.y[i])
+         if((snake.x[0]==snake.x[i])&&(snake.y[0]==snake.y[i])){
              gameflag=false; 
-         printf("%d",gameflag);
+             printf("%d %d %d %d %d",i,snake.x[i],snake.x[0],snake.y[i],snake.y[0]);
+         }
      }
      if(!gameflag)
          return true;
