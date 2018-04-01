@@ -86,8 +86,8 @@ void init_screen(int fps){
 }
 
 void init_game(){
-  snake.x[0]=50;//=snake.x[1]=1;
-  snake.y[0]=50;//=snake.y[1]=0;
+  snake.x[0]=screen.width/2;//=snake.x[1]=1;
+  snake.y[0]=screen.height/2;//=snake.y[1]=0;
   snake.foods=0;
   snake.length=50;
   snake.speed=1;
@@ -116,7 +116,7 @@ void game_progress(){
 }
 
 void screen_update(){
-  uint32_t backgroundcolor=black;
+  uint32_t backgroundcolor=firebrick;
   uint32_t snakecolor=darkgreen;
   
   if(!snake.alive)
