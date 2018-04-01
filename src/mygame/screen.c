@@ -31,7 +31,7 @@ static inline void draw_string(const char *Str,int x,int y,int color){
    }
 }
 */
-
+/*
 void screen_update(){
    body_t it;
    food_t food;
@@ -55,4 +55,4 @@ void screen_update(){
    draw_string(itoa(get_fps()),0,0,14);
    draw_string("FPS",0,strlen(itoa(get_fps()))*8,18);     
 } 
-
+*/
