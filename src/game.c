@@ -31,6 +31,10 @@
 #define HZ 100
 #define FPS 30
 
+#define darkgreen 0x00006400
+#define firebrick 0x00b12222
+#define deeppink  0x00cd1076
+
 struct{
    int fps;
    int height,width;
@@ -66,10 +70,10 @@ void draw_screen(){
   dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
   printf("have a test!\n");
  
-  uint32_t pixel=0x00faaa5f;
+  uint32_t pixel=deeppink;
   for(int x=0;x<100;x++)
     for(int y=0;y<100;y++)
-       draw_rect(&pixel,x+info.width/2-50,y+info.height/2-50,1,1);
+       draw_rect(&pixel,x+info.width,y+info.height,1,1);
 }
 
 void main_loop(){ 
