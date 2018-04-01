@@ -126,13 +126,13 @@ void screen_update(){
       snake.x[i]=snake.x[i-1]+1;
       snake.y[i]=snake.y[i-1];
   }
-
-  for(int i=0;i<screen.width;i++)
+  printf("%d,%d",screen.width,screen.height);
+  for(int i=0;i<screen.width;i++){
       for(int j=0;j<screen.height;j++){
          //draw_rect(&backgroundcolor,i,j,1,1);
-         for(int k=0;k<snake.length;k++)
-              printf("%d %d\n",snake.x[k],snake.y[k]);
- 
+         //for(int k=0;k<snake.length;k++)
+         //     printf("%d %d\n",snake.x[k],snake.y[k]);
+          
          for(int k=0;k<snake.length;k++){
              if(snake.x[k]==i&&snake.y[k]==j){
                    draw_rect(&snakecolor,i,j,1,1);
@@ -141,6 +141,7 @@ void screen_update(){
          }
          
       }
+  }
 }
 
 
