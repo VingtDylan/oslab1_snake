@@ -30,11 +30,13 @@ static inline void draw_string(const char *Str,int x,int y,int color){
       }
    }
 }
+*/
 
 void screen_update(){
    body_t it;
    food_t food;
    int i=0;
+
    for(it=snakebody();it!=NULL;it=it->next,i++){
       if(i==0)
           draw_string("O",it->r_x,it->r_y,9);
@@ -51,7 +53,6 @@ void screen_update(){
           draw_string("#",food->x,food->y,4);
   
    draw_string(itoa(get_fps()),0,0,14);
-   draw_string("FPS",0,strlen(itoa(get_fps()))*8,18);
-     
+   draw_string("FPS",0,strlen(itoa(get_fps()))*8,18);     
 } 
-*/
+

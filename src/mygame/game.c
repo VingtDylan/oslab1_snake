@@ -41,6 +41,11 @@ do\
 while(0)\
 
 static int real_fps;
+static int dida=0;
+
+void timer(void){
+  tick++;
+}
 
 void set_fps(int value){
   real_fps=value;
@@ -50,49 +55,53 @@ int get_fps(){
   return real_fps;
 }
 
+
 void main_loop(){ 
       
-    char str[M] = {0};  
-    int i = 0;  
-    char symbol[4] = {'|','/','-','\\'};  
-    for(i = 0; i<M; ++i)  
-    {  
-        int c = i%5;  
-        switch(c)  
-        {  
-            case 0:  
-                printf(RED);  
-                break;  
-            case 1:  
-                printf(GREEN);  
-                break;  
-            case 2:  
-                printf(BLUE);  
-                break;  
-            case 3:  
-                printf(YELLOW);  
-                break;  
-            case 4:  
-                printf(BROWN);  
-                break;  
-        }  
-  
-        str[i] = '*';  
-        //if(system("clear")!=0)
-           //EXIT_ERR("clear!");  
-        printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
-        //fflush(stdout);  
-        //sleep(1);  
-        printf("\n");  
-        //if(system("clear")!=0)
-           //EXIT_ERR("clear!");  
-    }  
-    printf("\033[0m");
-   /*int num_draw=0;
-   //int frames=0;
+   char str[M] = {0};  
+   int i = 0;  
+   char symbol[4] = {'|','/','-','\\'};  
+   for(i = 0; i<M; ++i)  
+   {  
+       int c = i%5;  
+       switch(c)  
+       {  
+           case 0:  
+               printf(RED);  
+               break;  
+           case 1:  
+               printf(GREEN);  
+               break;  
+           case 2:  
+               printf(BLUE);  
+               break;  
+           case 3:  
+               printf(YELLOW);  
+               break;  
+           case 4:  
+               printf(BROWN);  
+               break;  
+       }  
+ 
+       str[i] = '*';  
+       //if(system("clear")!=0)
+          //EXIT_ERR("clear!");  
+       printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
+       //fflush(stdout);  
+       //sleep(1);  
+       printf("\n");  
+       //if(system("clear")!=0)
+          //EXIT_ERR("clear!");  
+   }  
+   printf("\033[0m");
+
+   int num_draw=0;
+   int frames=0;
    int key;
+
    unsigned long next_frame=0;
    unsigned long next_refresh=0;
+
    while(1){
       bool fresh=false;
       while(uptime()<next_frame);
@@ -118,8 +127,6 @@ void main_loop(){
       }
       next_frame+=1000/FPS;
     }
-    return ;
-    */
     return ;
 }
 
