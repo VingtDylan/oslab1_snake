@@ -37,7 +37,6 @@ int main() {
     }
     printf("\n");
   }
-  system("clear");
   main_loop();
 } 
 

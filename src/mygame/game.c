@@ -75,16 +75,18 @@ void main_loop(){
        }  
  
        str[i] = '*';  
-       if(system("clear")!=0)
-          printf("clear!");  
+       /*if(system("clear")!=0)
+          printf("clear!");*/  
        printf("[%-4s][%%%d][%c]",str,i*25,symbol[i%4]);  
        //fflush(stdout);  
        //sleep(1);  
        printf("\n");  
-       if(system("clear")!=0)
-          printf("clear!");  
+       /*if(system("clear")!=0)
+          printf("clear!");*/  
    }  
    printf("\033[0m");
+
+   
 
    /*int num_draw=0;
    int frames=0;
