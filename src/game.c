@@ -71,6 +71,25 @@ void draw_screen(){
        draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
 }
 
+
+void kbd_event(){
+  
+  //
+  printf("in work\n");
+}
+
+void game_progress(){
+
+
+  printf("to be completed\n");
+}
+
+void screen_update(){
+  
+  printf("to be completed!\n");
+}
+
+
 void main_loop(){ 
       
    char str[M] = {0};  
@@ -111,10 +130,12 @@ void main_loop(){
    printf("\033[0m");
   
    static int fps=30;
+   
+
    init_screen(fps);      
    draw_screen(); 
   
-   /*int num_draw=0;
+   int num_draw=0;
    int frames=0;
    int key;
 
@@ -139,13 +160,13 @@ void main_loop(){
    
       game_progress();
 
-      if(fresh()){
+      if(fresh){
          num_draw++;
          set_fps(num_draw*100/uptime());
          screen_update();
       }
       next_frame+=1000/FPS;
-    }*/
+    }
     return ;
 }
 
