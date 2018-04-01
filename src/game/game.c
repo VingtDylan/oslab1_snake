@@ -168,10 +168,11 @@ bool game_end(){
          gameflag=false;
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
-     printf("%d",gameflag);
-     for(int i=1;i<snake.length;i++)
+     for(int i=1;i<snake.length;i++){
          if(snake.x[0]==snake.x[i]&&snake.y[0]==snake.y[i])
              gameflag=false; 
+         printf("%d",gameflag);
+     }
      if(!gameflag)
          return true;
      return false;
