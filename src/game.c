@@ -173,12 +173,12 @@ void main_loop(){
    //int num_draw=0;
    //int frames=0;
    
-   unsigned long next_frame=0;
+   //unsigned long next_frame=0;
    //unsigned long next_refresh=0;
    
-   while(1){
+   //while(1){
       //bool fresh=false;
-      while(uptime()<next_frame);
+     // while(uptime()<next_frame);
       //frames++; 
    
       //if(uptime()>next_refresh){
@@ -195,11 +195,11 @@ void main_loop(){
         // num_draw++;
         // set_fps(num_draw*100/uptime());
       
-      screen_update();
+     // screen_update();
      
       //}
-      next_frame+=1000/FPS;
-    }
+      //next_frame+=1000/FPS;
+   // }
     return ;
 }
 
