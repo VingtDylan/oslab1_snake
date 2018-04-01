@@ -64,7 +64,7 @@ int sprintf(char *buf,const char *fmt,...){
     va_end(arg_ptr);
     return --index;
 }
-*/
+
 
 int snprintf(char *buf,size_t size,const char *fmt,...){
     va_list arg_ptr;
@@ -103,7 +103,7 @@ int snprintf(char *buf,size_t size,const char *fmt,...){
     va_end(arg_ptr);
     return --index;    
 }
-
+*/
 
 void myitoa(int n,char str[],int radix){
    int i,j,rest;
