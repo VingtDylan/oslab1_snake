@@ -3,7 +3,7 @@
 #include "lib.h"
 #include "am.h"
 #include "amdev.h"
-#include "unistd.h"
+#include "typye.h"
 
 #define M  4  
 #define maxn 256
@@ -31,7 +31,7 @@
 #define FPS 30
 
 struct{
-   int FPS;
+   int fps;
    int height,width;
    int next_frame;
 }screen;
@@ -51,10 +51,10 @@ int get_fps(){
   return real_fps;
 }
 
-void init_screen(FPS){
-  screen.FPS=FPS;
-  //screen.height=screen_width();
-  //screen.width=screen_height();
+void init_screen(int fps){
+  screen.fps=fps;
+  screen.height=screen_width();
+  screen.width=screen_height();
   screen.next_frame=0;
   printf("screen updated!");
 }
@@ -97,8 +97,9 @@ void main_loop(){
           printf("clear!");*/  
    }  
    printf("\033[0m");
-
-   init_screen();   
+  
+   static int fps=30;
+   init_screen(fps);   
 
    /*int num_draw=0;
    int frames=0;

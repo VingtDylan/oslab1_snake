@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <game.h>
+#include <type.h>
 
 // TODO: implement necessary libraries
 /*int printf(const char *fmt, ...) {
