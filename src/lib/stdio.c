@@ -5,6 +5,8 @@
 #include "stdlib.h"
 #include "ctype.h"
 
+
+/*
 unsigned int write_int(char *buf,int val){
     unsigned char stack[10];
     unsigned char length=0;
@@ -62,6 +64,7 @@ int sprintf(char *buf,const char *fmt,...){
     va_end(arg_ptr);
     return --index;
 }
+*/
 
 int snprintf(char *buf,size_t size,const char *fmt,...){
     va_list arg_ptr;
