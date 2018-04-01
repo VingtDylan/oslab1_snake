@@ -69,11 +69,24 @@ void draw_screen(){
   _Device *dev=get_device(_DEV_VIDEO);
   dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
   printf("have a test!\n");
+   
+  for(int x=0;x<100;x++)
+     for(int y=0;y<100;y++){
+         _FBCtlReg ctl;
+         uint32_t pixels=0x00fa005f;
+         ctl.x=info.width/2-50+x;
+         ctl.y=info.height/2-50+y;
+         ctl.w=ctl.h=1;
+         ctl.sync=1;
+         ctl.pixels=&pixels;
+         dev->write(_DEVREG_VIDEO_FBCTL,&ctl,sizeof(ctl));
+     } 
  
-  uint32_t pixel=0x00ff0000;
+  /*uint32_t pixel=0x00ff0000;
   for(int x=0;x<100;x++)
     for(int y=0;y<100;y++)
        draw_rect(&pixel,x+info.width/2-50,y+info.height/2-50,1,1);
+  */
 }
 
 void main_loop(){ 
