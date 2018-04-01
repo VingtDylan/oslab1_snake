@@ -7,7 +7,7 @@
 #include <assert.h>
 
 /*parameter
-_DEV_PERFNT  0x0000ac01
+_DEV_PERFCNT  0x0000ac01
 _DEV_INPUT   0x0000ac02
 _DEV_TIMER   0x0000ac03
 _DEV_VIDEO   0x0000ac04
@@ -16,7 +16,7 @@ _DEV_ATA0    0x00000dd0
 _DEV_ATA1    0x00000dd1
 */
 
-static _Device *perfnt = NULL;
+static _Device *perfcnt = NULL;
 static _Device *input = NULL;
 static _Device *timer = NULL;
 static _Device *video = NULL;
@@ -32,8 +32,8 @@ _Device *get_device(uint32_t id) {
   return NULL;
 }
 
-void init_perfnt(){
-  perfnt=get_device(_DEV_PERFNT);
+void init_perfcnt(){
+  perfcnt=get_device(_DEV_PERFCNT);
 }
 
 void init_input(){
@@ -49,7 +49,7 @@ void init_video(){
 }
  
 void init_pciconf(){
-  pcicon =get_device(_DEV_PCICONF);
+  pciconf=get_device(_DEV_PCICONF);
 }
 
 void init_ata0(){
@@ -80,9 +80,9 @@ void read_key(int *key, int *down) {
   _KbdReg pressed;
   input->read(_DEVREG_INPUT_KBD, &pressed, sizeof(pressed));
   if (key)
-    *key = kbd.keycode;
+    *key = pressed.keycode;
   if (down)
-    *down = kbd.keydown;
+    *down = pressed.keydown;
 }
 
 void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
@@ -107,18 +107,18 @@ int screen_width() {
   if (!video) 
     init_video();
 
-  _VideoInfoReg video;
-  video->read(_DEVREG_VIDEO_INFO, &video, sizeof(video));
-  return info.width;
+  _VideoInfoReg film;
+  video->read(_DEVREG_VIDEO_INFO, &film, sizeof(film));
+  return film.width;
 }
 
 int screen_height() {
   if (!video) 
     init_video();
 
-  _VideoInfoReg video;
-  video->read(_DEVREG_VIDEO_INFO, &video, sizeof(video));
-  return info.height;
+  _VideoInfoReg film;
+  video->read(_DEVREG_VIDEO_INFO, &film, sizeof(film));
+  return film.height;
 }
 
 uint32_t read_pciconf(_Device *dev,uint8_t bus, uint8_t slot, uint8_t func, uint8_t offset) {
@@ -129,13 +129,13 @@ uint32_t read_pciconf(_Device *dev,uint8_t bus, uint8_t slot, uint8_t func, uint
   return res;
 }
 
-void uint8_t readb(_Device *dev,uint32_t reg){
+uint8_t readb(_Device *dev,uint32_t reg){
   uint8_t res;
   dev->read(reg,&res,1);
   return res;
 }
 
-void uint32_t readl(_Device *dev,uint32_t reg){
+uint32_t readl(_Device *dev,uint32_t reg){
   uint32_t res;
   dev->read(reg,&res,4);
   return res;
