@@ -65,9 +65,7 @@ void init_screen(int fps){
 }
 
 void draw_screen(){
-  _Device *dev=get_device(_DEV_VIDEO);
-  if(dev==NULL)
-     init_video();
+  //_Device *dev=get_device(_DEV_VIDEO);
   /*
   for(int x=0;x<100;x++)
      for(int y=0;y<100;y++){
