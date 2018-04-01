@@ -1,3 +1,5 @@
+#include "unistd.h"
+#include "stdio.h"
 
 static int seed=0;
 
