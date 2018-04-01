@@ -210,6 +210,7 @@ void screen_update(){
              if(snake.x[k]>=i&&snake.x[k]<=i+4&&snake.y[k]>=j&&snake.y[k]<=j+4){
                    draw_rect(&snakecolor,i,j,1,1);
                    //printf("body!\n");
+                   printf("%d\n",snake.length);
              }
          }
          for(int k=0;k<=foo;k++){
