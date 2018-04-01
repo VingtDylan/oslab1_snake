@@ -133,7 +133,7 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);   
    
-   draw_screen(); 
+   //draw_screen(); 
   
    /*int num_draw=0;
    int frames=0;
