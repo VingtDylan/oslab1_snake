@@ -230,7 +230,9 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);
    init_game();      
-   draw_screen();   
+   //draw_screen();   
+   for(int i=0;i<snake.length;i++)
+       printf("%d %d",snake.x[i],snake.y[i]);
    unsigned long  next_frame=0;
       
    while(1){
