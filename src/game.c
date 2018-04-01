@@ -65,14 +65,12 @@ void init_screen(int fps){
 }
 
 void draw_screen(){
-  _VideoInfoReg info;
+  //_VideoInfoReg info;
   //_Device *dev=_device(_DEV_VIDEO);
-  //_Device *dev=get_device(_DEV_VIDEO);
-  dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
+  _Device *dev=get_device(_DEV_VIDEO);
+  //dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
   printf("have a test!\n");
-  
-  printf("%d.....",info.width);   
-   
+
   for(int x=0;x<100;x++)
      for(int y=0;y<100;y++){
          _FBCtlReg ctl;

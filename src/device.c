@@ -25,10 +25,13 @@ static _Device *ata0=NULL;
 static _Device *ata1=NULL;
 
 _Device *get_device(uint32_t id) {
-  _Device *dev;
-  for (int n = 1; (dev = _device(n)); n++) 
+  for (int n = 1; ; n++){
+    _Device *dev=_device(n);
+    if(!dev)
+      break;
     if (dev->id == id)
       return dev;
+  }
   return NULL;
 }
 
