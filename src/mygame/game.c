@@ -44,7 +44,7 @@ static int real_fps;
 static int dida=0;
 
 void timer(void){
-  tick++;
+  dida++;
 }
 
 void set_fps(int value){
@@ -95,7 +95,7 @@ void main_loop(){
    }  
    printf("\033[0m");
 
-   int num_draw=0;
+   /*int num_draw=0;
    int frames=0;
    int key;
 
@@ -126,7 +126,7 @@ void main_loop(){
          screen_update();
       }
       next_frame+=1000/FPS;
-    }
+    }*/
     return ;
 }
 
