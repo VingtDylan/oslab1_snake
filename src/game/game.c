@@ -75,8 +75,8 @@ void init_game(){
 }
 
 void generate(){
-  //if(foodflag)
-  //    return ;
+  if(foodflag)
+      return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
@@ -156,15 +156,16 @@ void snake_move(){
 }
 
 void get_food(){
-  if(snake.x[0]==food[foo-1].fx&&snake.y[0]==food[foo-1].fy){
-     foodflag=false;
-     snake.foods++;
-     snake.x[snake.length]=usedx;
-     snake.y[snake.length]=usedy;
-     snake.length++;
-  }  
-  else
-     return ;
+  for(int i=0;i<foo;i++){
+     if(snake.x[0]==food[i].fx&&snake.y[0]==food[i].fy){
+          foodflag=false;
+          snake.foods++;
+          snake.x[snake.length]=usedx;
+          snake.y[snake.length]=usedy;
+         snake.length++;
+     } 
+  } 
+  return ;
 }
 
 bool game_end(){
