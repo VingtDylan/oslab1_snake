@@ -109,9 +109,16 @@ void draw_screen(){
 
 
 void kbd_event(_KbdReg *key){
-  
-  //
-  printf("in work\n");
+  if(key->keydown){
+     switch(key->keycode){
+        case _KEY_UP:     printf("Up key!\b");     break;
+        case _KEY_DOWN:   printf("Down key!\n");   break;
+        case _KEY_LEFT:   printf("Left key!\n");   break;
+        case _KEY_RIGHT:  printf("Right key!\n");  break;
+        case _KEY_Q:      printf("quit?\n");       break;
+        default:          printf("???");           break;
+     }  
+  }
 }
 
 void game_progress(){
@@ -218,8 +225,8 @@ void main_loop(){
       //}
        next_frame+=1000/FPS;
    
-      //_KbdReg *key=read_key();
-      //kbd_event(key); 
+       _KbdReg *key=read_key();
+       kbd_event(key); 
        game_progress();
       
       //if(fresh){
