@@ -101,6 +101,7 @@ void kbd_event(_KbdReg *key){
   key->keydown=1;
   key->keycode=n%4+1;
   n++;
+  printf("%d",_KEY_UP);
    
   if(key->keydown){
      switch(key->keycode){
