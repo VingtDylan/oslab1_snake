@@ -23,11 +23,11 @@ int system(const char *cmd){
       status=-1;
   else if(pid==0){
       execl("/bin/sh","sh","-c",cmd,(char*)0);
-      -exit(127);
+      exit(127);
   }
   else{
       while(waitpid(pid,&status,0)<0){
-         if(errno!=EINTER){
+         if(errno!=EINTR){
              status=-1;
              break;
          }
