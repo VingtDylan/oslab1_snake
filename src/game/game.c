@@ -61,7 +61,7 @@ void init_screen(int fps){
 void init_game(){
   snake.x[0]=screen.width/2;
   snake.y[0]=screen.height/2;
-  printf("here`");
+  printf("%d",snake.length);
   for(int i=1;i<snake.length;i++){
      snake.x[i]=snake.x[i-1]+1;
      snake.y[i]=snake.y[i-1];
@@ -234,7 +234,7 @@ void main_loop(){
    //printf("%d %d ",screen.height,screen.width); 
    //draw_screen();   
    for(int i=0;i<snake.length;i++)
-       printf("%d %d",snake.x[i],snake.y[i]);
+       printf(" %d %d",snake.x[i],snake.y[i]);
    unsigned long  next_frame=0;
       
    while(1){
