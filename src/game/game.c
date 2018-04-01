@@ -101,8 +101,7 @@ void kbd_event(_KbdReg *key){
   key->keydown=1;
   key->keycode=n%4+73;
   n++;
-  printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
-   
+  //printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
   if(key->keydown){
      switch(key->keycode){
         case 73:     {  //_KEY_UP
@@ -136,7 +135,6 @@ void kbd_event(_KbdReg *key){
                           }
         default:  break;        
      }  
-     printf("pressed");
   }
 }
 
