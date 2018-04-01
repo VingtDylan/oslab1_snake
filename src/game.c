@@ -28,7 +28,7 @@
 #define LIGHT_GRAY             "\033[0;37m"   
 #define WHITE                  "\033[1;37m"
 
-#define black     0x00000000
+#define lightgrey 0x00d3d3d3
 #define darkgreen 0x00006400
 #define firebrick 0x00b12222
 #define deeppink  0x00cd1076
@@ -116,11 +116,11 @@ void game_progress(){
 }
 
 void screen_update(){
-//  uint32_t backgroundcolor=black;
+  uint32_t backgroundcolor=lightgrey;
   uint32_t snakecolor=darkgreen;
   
-  //if(!snake.alive)
-  //    backgroundcolor=firebrick;
+  if(!snake.alive)
+      backgroundcolor=firebrick;
  
   for(int i=1;i<snake.length;i++){
       snake.x[i]=snake.x[i-1]+1;
@@ -129,7 +129,7 @@ void screen_update(){
   printf("%d,%d",screen.width,screen.height);
   for(int i=0;i<screen.width;i++){
       for(int j=0;j<screen.height;j++){
-         //draw_rect(&backgroundcolor,i,j,1,1);
+         draw_rect(&backgroundcolor,i,j,1,1);
          //for(int k=0;k<snake.length;k++)
          //     printf("%d %d\n",snake.x[k],snake.y[k]);
           
