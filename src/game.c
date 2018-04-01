@@ -3,7 +3,7 @@
 #include "lib.h"
 #include "am.h"
 #include "amdev.h"
-#include "typye.h"
+#include "type.h"
 
 #define M  4  
 #define maxn 256
