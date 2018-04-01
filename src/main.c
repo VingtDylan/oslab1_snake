@@ -43,6 +43,7 @@ int main() {
   return 0;
 } 
 
+/*
 static void input_test(_Device *dev) {
   printf("Input device test skipped.\n");
 }
@@ -141,3 +142,4 @@ static void ata_test(_Device *dev) {
     printf("\n");
   }
 }
+*/
