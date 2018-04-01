@@ -190,7 +190,7 @@ void game_progress(){
 }
 
 void screen_update(){
-  uint32_t backgroundcolor=0x00000000;//lightgrey;
+  uint32_t backgroundcolor=lightgrey;
   uint32_t snakecolor=darkgreen;
   uint32_t foodcolor=deeppink;
   if(!snake.alive)
@@ -207,9 +207,9 @@ void screen_update(){
          //for(int k=0;k<snake.length;k++)
          //     printf("%d %d\n",snake.x[k],snake.y[k]); 
          for(int k=0;k<snake.length;k++){
-             if(snake.x[k]==i&&snake.y[k]==j){
+             if(snake.x[k]>=i&&snake.x[k]<=i+4&&snake.y[k]>=j&&snake.y[k]<=j+4){
                    draw_rect(&snakecolor,i,j,1,1);
-                   printf("body!\n");
+                   //printf("body!\n");
              }
          }
          for(int k=0;k<=foo;k++){
