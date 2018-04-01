@@ -147,19 +147,19 @@ void snake_move(){
   }
   switch(snake.direction){
      case up:   {
-                    snake.y[0]+=snake.speed*4;
-                    break;
-                }
-     case down: {
                     snake.y[0]-=snake.speed*4;
                     break;
                 }
+     case down: {
+                    snake.y[0]+=snake.speed*4;
+                    break;
+                }
      case left: {
-                    snake.x[0]-=snake.speed*4;
+                    snake.x[0]+=snake.speed*4;
                     break;
                 }
      case right:{ 
-                    snake.x[0]+=snake.speed*4;
+                    snake.x[0]-=snake.speed*4;
                 }
      default:break;
   } 
