@@ -45,6 +45,7 @@ static int usedx,usedy;
 
 bool foodflag;
 bool gameflag;
+bool game_win;
 
 void timer(void){
   dida++;
@@ -68,6 +69,7 @@ void init_game(){
   snake.alive=true;
   foodflag=false;
   gameflag=true;
+  game_win=false;
   for(int i=1;i<snake.length;i++){
      snake.x[i]=snake.x[i-1]+1;
      snake.y[i]=snake.y[i-1];
@@ -75,12 +77,14 @@ void init_game(){
 }
 
 void generate(){
-  if(foodflag)
-      return ;
+  //if(foodflag)
+  //    return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
-  foodflag=true;
+  if(foo==10)
+      game_win=true;
+  //foodflag=true;
 }
 
 void draw_screen(){
@@ -186,8 +190,8 @@ bool game_end(){
 
 void game_progress(){
   generate();
-  snake_move();
-  get_food();
+  //snake_move();
+  //get_food();
 }
 
 void screen_update(){
@@ -241,6 +245,8 @@ void main_loop(){
       //kbd_event(key); 
       game_progress();
       if(game_end())
+          break;
+      if(game_win)
           break;
       screen_update();
       next_frame+=1000/FPS;
