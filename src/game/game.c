@@ -75,8 +75,8 @@ void init_game(){
 }
 
 void generate(){
-  if(foodflag)
-      return ;
+  //if(foodflag)
+  //    return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
@@ -185,8 +185,8 @@ bool game_end(){
 
 void game_progress(){
   generate();
-  //snake_move();
-  //get_food();
+  snake_move();
+  get_food();
 }
 
 void screen_update(){
