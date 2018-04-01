@@ -39,10 +39,12 @@ struct{
    int fps;
    int height,width;
    int next_frame;
-}screen;
+}filefilm;
 
 static int real_fps;
 static int dida=0;
+
+filefilm screen;
 
 void timer(void){
   dida++;
@@ -75,8 +77,8 @@ void draw_screen(){
      for(int y=0;y<100;y++){
          _FBCtlReg ctl;
          uint32_t pixels=0x00fa005f;
-         ctl.x=x;
-         ctl.y=y;
+         ctl.x=x+screen.width/2;
+         ctl.y=y+screen.height/2;
          ctl.w=ctl.h=1;
          ctl.sync=1;
          ctl.pixels=&pixels;
