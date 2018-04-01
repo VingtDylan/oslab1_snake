@@ -60,6 +60,17 @@ void init_screen(int fps){
   printf("screen updated!");
 }
 
+void draw_screen(){
+  _VideoInfoReg info;
+  dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
+  printf("have a test!\n");
+ 
+  uint32_t pixel=0x006a5f;
+  for(int x=0;x<100;x++)
+    for(int y=0;y<100;y++)
+       draw_rect(&pixel,x+info.width/2-50,y+info.height/2-50,1,1);
+}
+
 void main_loop(){ 
       
    char str[M] = {0};  
@@ -101,7 +112,9 @@ void main_loop(){
   
    static int fps=30;
    init_screen(fps);   
-
+   
+   draw_screen(); 
+  
    /*int num_draw=0;
    int frames=0;
    int key;
