@@ -190,7 +190,7 @@ bool game_end(){
 
 void game_progress(){
   generate();
-  //snake_move();
+  snake_move();
   //get_food();
 }
 
