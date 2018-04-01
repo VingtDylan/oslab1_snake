@@ -101,29 +101,29 @@ void kbd_event(_KbdReg *key){
   key->keydown=1;
   key->keycode=n%4+1;
   n++;
-  printf("%d",_KEY_UP);
+  printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
    
   if(key->keydown){
      switch(key->keycode){
-        case _KEY_UP:     {
+        case 73:     {  //_KEY_UP
                              if(snake.direction!=down)
                                    snake.direction=up;
                              printf("Up key!\b");     
                              break;
                           }
-        case _KEY_DOWN:   {
+        case 74:   {  //_KEY_DOWN
                              if(snake.direction!=up)
                                    snake.direction=down;
                              printf("Down key!\n");   
                              break;
                           }
-        case _KEY_LEFT:   {
+        case 75:  {  //_KEY_LEFT
                              if(snake.direction!=right)
                                    snake.direction=left;
                              printf("Left key!\n");   
                              break;
                           }
-        case _KEY_RIGHT:  {
+        case 76:  {  //_KEY_RIGHT
                              if(snake.direction!=left)
                                    snake.direction=right;
                              printf("Right key!\n"); 
