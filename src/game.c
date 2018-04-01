@@ -116,7 +116,7 @@ void game_progress(){
 }
 
 void screen_update(){
-  uint32_t backgroundcolor=black;
+//  uint32_t backgroundcolor=black;
   uint32_t snakecolor=darkgreen;
   
   if(!snake.alive)
