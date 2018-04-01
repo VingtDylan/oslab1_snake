@@ -171,6 +171,7 @@ bool game_end(){
      for(int i=1;i<snake.length;i++)
          if(snake.x[0]==snake.x[i]&&snake.y[0]==snake.y[i])
              gameflag=false;
+     printf("%d\n",gameflag); 
      if(!gameflag)
          return true;
      return false;
@@ -232,7 +233,6 @@ void main_loop(){
       game_progress();
       if(game_end())
           break;
-      draw_screen();
       screen_update();
       next_frame+=1000/FPS;
     }
