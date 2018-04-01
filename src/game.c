@@ -70,7 +70,7 @@ void draw_screen(){
   dev->read(_DEVREG_VIDEO_INFO,&info,sizeof(info));
   printf("have a test!\n");
  
-  uint32_t pixel=firebrick;
+  uint32_t pixel=0x00ff0000;
   for(int x=0;x<100;x++)
     for(int y=0;y<100;y++)
        draw_rect(&pixel,x+info.width,y+info.height,1,1);
