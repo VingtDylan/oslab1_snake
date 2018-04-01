@@ -95,8 +95,8 @@ void init_game(){
 }
 
 void generate(){
-  food[foo].y=rand()%(screen.width);
-  food[foo].y=rand()%(screen.height);
+  food[foo].fx=rand()%(screen.width);
+  food[foo].fy=rand()%(screen.height);
   foo++;
 }
 
@@ -145,7 +145,7 @@ void screen_update(){
              }
          }
          for(int k=0;k<=foo;k++){
-             if(food[k].x>=i&&food[k].x<=i+4&&food[k].y>=j;food[k].y<=j+4){
+             if(food[k].fx>=i&&food[k].fx<=i+4&&food[k].fy>=j&&food[k].fy<=j+4){
                   draw_rect(&foodcolor,i,j,1,1);
                   printf("food!\n");
              }
