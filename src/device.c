@@ -91,7 +91,7 @@ void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
   ctl.w = w;
   ctl.h = h;
   ctl.sync = 1;
-  ctl.pixels = pixels;
+  ctl.pixels =&pixels;
   video->write(_DEVREG_VIDEO_FBCTL, &ctl, sizeof(ctl));
 }
 
