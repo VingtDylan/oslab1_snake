@@ -79,8 +79,7 @@ static void video_test(_Device *dev) {
   printf("You should see a purple square on the screen.\n");
 }
 
-static uint32_t pci_conf_read(_Device *dev, uint8_t bus, uint8_t slot,
-                              uint8_t func, uint8_t offset) {
+static uint32_t pci_conf_read(_Device *dev, uint8_t bus, uint8_t slot,uint8_t func, uint8_t offset) {
   uint32_t res;
   dev->read(_DEVREG_PCICONF(bus, slot, func, offset), &res, 4);
   return res;
