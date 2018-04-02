@@ -125,11 +125,11 @@ void draw_screen(){
      uint32_t pixel=purple;
      for(int x=0;x<=75;x++)
         for(int y=0;y<150;y++)
-            if(y>=2x-10&&y<=2x+10)
+            if(y>=2*x-10&&y<=2*x+10)
                draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
      for(int x=75;x<150;x++)
         for(int y=0;y<150;y++)
-            if(2x+y>=290&&2x+y<=310)
+            if(2*x+y>=290&&2*x+y<=310)
                draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);    
   }
 }
