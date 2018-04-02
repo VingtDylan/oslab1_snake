@@ -229,7 +229,7 @@ bool game_end(){
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
      for(int i=0;i<wal;i++){
-         if(snake.x[0]>=wall[i].wx&&snake.x[0]<=wall[i]+4&&snake.y[0]>=wall[i].wy&&snake.y[0]<=wall[i].wy+4){
+         if(snake.x[0]>=wall[i].wx&&snake.x[0]<=wall[i].wx+4&&snake.y[0]>=wall[i].wy&&snake.y[0]<=wall[i].wy+4){
              gameflag=false;
              break;
          }
