@@ -85,6 +85,10 @@ void init_game(){
   wall[wal].wx=(rand()%(screen.width/2)+(screen.width/4));
   wall[wal].wy=(rand()%(screen.height/2)+(screen.height/4));
   wal+=20;
+  for(int i=wal-19;i<wal;i++){
+            wall[i].wx=wall[i-1].wx+1;
+            wall[i].wy=wall[i-1].wy;
+  }
   gameflag=true;
   game_win=false;
   for(int i=1;i<snake.length;i++){
