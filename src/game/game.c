@@ -139,8 +139,8 @@ void draw_screen(){
            draw_rect(&background,x,y,1,1);
            if(x<290&&x>270&&y>190&&y<340)
               draw_rect(&pixel,x,y,1,1);
-           if(x<290&&x>270&&y>320&&y<340)
-              draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
+           if(x<420&&x>270&&y>320&&y<340)
+              draw_rect(&pixel,x,y,1,1);
         }
      }
   }
