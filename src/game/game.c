@@ -95,7 +95,7 @@ void generate(){
   foodflag=true;
   if(foo==10)
       game_win=true;
-  
+   
   if(dida%10!=0)
       return ;
   wall[wal].wx=rand()%(screen.width);
@@ -200,7 +200,7 @@ void snake_move(){
 
 void get_food(){
   for(int i=0;i<foo;i++){
-     if(snake.x[0]==food[i].fx&&snake.y[0]==food[i].fy){
+     if(snake.x[0]>=food[i].fx&&snake.x[0]+4<=food[i].fx&&snake.y[0]>=food[i].fy&&snake.y[0]<=food[i].fy+4){
           food[i].flag=false;
           snake.foods++;
           if(snake.foods>=20)
