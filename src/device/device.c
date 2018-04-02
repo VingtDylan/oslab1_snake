@@ -78,7 +78,9 @@ _KbdReg *read_key() {
 
   _KbdReg *pressed=NULL;
   input->read(_DEVREG_INPUT_KBD, &pressed, sizeof(pressed));
-  printf("%d\n",pressed==NULL);
+  printf("%d ",pressed==NULL);
+  printf("%d ",pressed->keydown);
+  printf("%d\n",pressed->keycode);
   return pressed;
 }
 
