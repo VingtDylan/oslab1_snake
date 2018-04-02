@@ -81,7 +81,7 @@ _KbdReg *read_key() {
   pressed->keydown=(pressed==NULL)?0:1;
   pressed->keycode=(pressed->keydown==1)?(pressed->keycode):0;
   printf("%d %d\n",pressed->keydown,pressed->keycode);
-  //return pressed;
+  return pressed;
 }
 
 void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
