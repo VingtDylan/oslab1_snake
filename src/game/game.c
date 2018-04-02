@@ -97,7 +97,7 @@ void init_game(){
   }
 }
 
-static int walldir=0;
+static int walldir=1;
 
 void generate(){
   if(foodflag&&(dida%20!=0))
