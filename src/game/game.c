@@ -131,13 +131,14 @@ void generate(){
 
 void draw_screen(){
   uint32_t background=lightgrey; 
+  printf("%d",screen.height);
   if(!gameflag){
      printf("L for lost!\n");
      uint32_t pixel=firebrick;
      for(int x=0;x<screen.width;x++){
         for(int y=0;y<screen.height;y++){
            draw_rect(&background,x,y,1,1);
-           if(x<290&&y<150)
+           if(x<20&&y<150)
               draw_rect(&pixel,x,y,1,1);
            if(x<20&&y>=130&&y<150)
               draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
