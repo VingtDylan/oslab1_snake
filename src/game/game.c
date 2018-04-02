@@ -268,7 +268,7 @@ void screen_update(){
              }
          }
          for(int k=0;k<=foo;k++){
-             if(food[k].fx>=i&&food[k].fx<=i+4&&food[k].fy>=j&&food[k].fy<=j+4){
+             if(food[k].fx>=i&&food[k].fx<=i+4&&food[k].fy>=j&&food[k].fy<=j+4&&food[k].flag){
                   draw_rect(&foodcolor,i,j,1,1);
              }
          }
