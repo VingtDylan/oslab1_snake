@@ -72,7 +72,7 @@ void init_game(){
   gameflag=true;
   game_win=false;
   for(int i=1;i<snake.length;i++){
-     snake.x[i]=snake.x[i-1]+1;
+     snake.x[i]=snake.x[i-1]-1;
      snake.y[i]=snake.y[i-1];
   }
 }
@@ -96,12 +96,19 @@ void draw_screen(){
 }
 
 static int n=0;
+static int index=0;
 
 void kbd_event(_KbdReg *key){
   
   key->keydown=1;
   key->keycode=n%4+73;
-  //n++;
+  switch(index){
+     case 0:n=2;
+     case 1:n=0;
+     case 2:n=3;
+     case 3:n=0; 
+  }
+  index=(index+1)%4;
   //printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
   if(key->keydown){
      switch(key->keycode){
