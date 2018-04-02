@@ -193,6 +193,11 @@ void kbd_event(int ckey,int ckeydown){
                              printf("quit?\n");       
                              break;
                           }
+        case _KEY_W:      {
+                             game_win=true;
+                             printf("you look look you\n");       
+                             break;
+                          }
         default:  break;        
      }  
   }
