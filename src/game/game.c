@@ -221,7 +221,7 @@ void snake_move(){
 
 void get_food(){
   for(int i=0;i<foo;i++){
-     if(snake.x[0]>=food[i].fx-2&&snake.x[0]<=food[i].fx+2&&snake.y[0]>=food[i].fy-2&&snake.y[0]<=food[i].fy+2){
+     if(snake.x[0]>=food[i].fx-4&&snake.x[0]<=food[i].fx+4&&snake.y[0]>=food[i].fy-4&&snake.y[0]<=food[i].fy+4){
           food[i].flag=false;
           snake.foods++;
           if(snake.foods>=20)
