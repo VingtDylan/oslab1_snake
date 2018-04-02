@@ -139,7 +139,7 @@ void draw_screen(){
            draw_rect(&background,x,y,1,1);
            if(x<290&&x>270&&y>190&&y<340)
               draw_rect(&pixel,x,y,1,1);
-           if(x<420&&x>270&&y>320&&y<340)
+           if(x<330&&x>270&&y>320&&y<340)
               draw_rect(&pixel,x,y,1,1);
         }
      }
@@ -147,17 +147,17 @@ void draw_screen(){
   else{
      printf("V for win\n");
      uint32_t pixel=purple;
-     for(int i=0;i<screen.width;i++)
-        for(int j=0;j<screen.height;j++)
+     for(int i=0;i<screen.width;i++){
+        for(int j=0;j<screen.height;j++){
            draw_rect(&pixel,i,j,1,1);
-     for(int x=0;x<=75;x++)
-        for(int y=0;y<150;y++)
-            if(y>=2*x-10&&y<=2*x+10)
-               draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
-     for(int x=75;x<150;x++)
-        for(int y=0;y<150;y++)
-            if(2*x+y>=290&&2*x+y<=310)
-               draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);    
+           if(x>270&&x<345&&y>0&&y<340)
+              if((y-190)>=2*(x-270)-10&&(y-190)<=2*(x-270)+10)
+                   draw_rect(&pixel,x,j,1,1);
+           if(x>345&&x<420&&y>190&&y<340)
+              if(2*(x-270)+(y-190)>=290&&2*(x-270)+(y-190)<=310)
+                   draw_rect(&pixel,x,j,1,1);   
+        }
+     }
   }
 }
 
