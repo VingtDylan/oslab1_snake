@@ -221,7 +221,7 @@ void snake_move(){
 
 void get_food(){
   for(int i=0;i<foo;i++){
-     if(snake.x[0]>=food[i].fx-4&&snake.x[0]<=food[i].fx+4&&snake.y[0]>=food[i].fy-4&&snake.y[0]<=food[i].fy+4){
+     if(snake.x[0]>=food[i].fx-2&&snake.x[0]<=food[i].fx+2&&snake.y[0]>=food[i].fy-2&&snake.y[0]<=food[i].fy+2){
           food[i].flag=false;
           snake.foods++;
           if(snake.foods>=20)
@@ -250,7 +250,7 @@ bool game_end(){
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
      for(int i=0;i<wal;i++){
-         if(snake.x[0]>=wall[i].wx-4&&snake.x[0]<=wall[i].wx+4&&snake.y[0]>=wall[i].wy-4&&snake.y[0]<=wall[i].wy+4){
+         if(snake.x[0]>=wall[i].wx-2&&snake.x[0]<=wall[i].wx+2&&snake.y[0]>=wall[i].wy-2&&snake.y[0]<=wall[i].wy+2){
              gameflag=false;
              break;
          }
