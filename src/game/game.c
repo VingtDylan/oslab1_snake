@@ -107,9 +107,7 @@ void generate(){
   food[foo].flag=true;
   foo++;
   foodflag=true;
-  if(snake.foods==1)
-      game_win=true;
-   
+ 
   if(dida%20!=0)
       return ;
   wall[wal].wx=rand()%(screen.width);
@@ -252,7 +250,7 @@ bool game_end(){
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
      for(int i=0;i<wal;i++){
-         if(snake.x[0]>=wall[i].wx&&snake.x[0]<=wall[i].wx+4&&snake.y[0]>=wall[i].wy&&snake.y[0]<=wall[i].wy+4){
+         if(snake.x[0]>=wall[i].wx-4&&snake.x[0]<=wall[i].wx+4&&snake.y[0]>=wall[i].wy-4&&snake.y[0]<=wall[i].wy+4){
              gameflag=false;
              break;
          }
@@ -274,6 +272,9 @@ void game_progress(){
   generate();
   snake_move();
   get_food();
+  if(snake.foods==1)
+      game_win=true;
+
 }
 
 void screen_update(){
