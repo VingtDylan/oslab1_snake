@@ -133,6 +133,9 @@ void draw_screen(){
   if(!gameflag){
      printf("L for lost!\n");
      uint32_t pixel=firebrick;
+     for(int i=0;i<screen.width;i++){
+        for(int j=0;j<screen.height;j++){
+           draw_rect(&pixel,i,j,1,1);
      for(int x=0;x<20;x++)
         for(int y=0;y<150;y++)
            draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
@@ -143,6 +146,9 @@ void draw_screen(){
   else{
      printf("V for win\n");
      uint32_t pixel=purple;
+     for(int i=0;i<screen.width;i++){
+        for(int j=0;j<screen.height;j++){
+           draw_rect(&pixel,i,j,1,1);
      for(int x=0;x<=75;x++)
         for(int y=0;y<150;y++)
             if(y>=2*x-10&&y<=2*x+10)
@@ -221,10 +227,10 @@ void snake_move(){
 
 void get_food(){
   for(int i=0;i<foo;i++){
-     if(snake.x[0]>=food[i].fx&&snake.x[0]<=food[i].fx+4&&snake.y[0]>=food[i].fy&&snake.y[0]<=food[i].fy+4){
+     if(snake.x[0]>=food[i].fx&&snake.x[0]<=food[i].fx+2&&snake.y[0]>=food[i].fy&&snake.y[0]<=food[i].fy+2){
           food[i].flag=false;
           snake.foods++;
-          if(snake.foods>=20)
+          if(snake.foods>=2)
               game_win=true;
           snake.x[snake.length]=usedx;
           snake.y[snake.length]=usedy;
@@ -272,7 +278,7 @@ void game_progress(){
   generate();
   snake_move();
   get_food();
-  if(snake.foods==1)
+  if(snake.foods==2)
       game_win=true;
 
 }
@@ -292,7 +298,6 @@ void screen_update(){
          for(int k=0;k<snake.length;k++){
              if(snake.x[k]>=i&&snake.x[k]<=i+4&&snake.y[k]>=j&&snake.y[k]<=j+4){
                    draw_rect(&snakecolor,i,j,1,1);
-                   //printf("body!\n");
              }
          }
          for(int k=0;k<=foo;k++){
@@ -329,7 +334,6 @@ void main_loop(){
       next_frame+=1000/FPS;
   }
   draw_screen();
-
 }
 
 
