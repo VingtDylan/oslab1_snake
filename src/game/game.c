@@ -203,7 +203,7 @@ void get_food(){
      if(snake.x[0]==food[i].fx&&snake.y[0]==food[i].fy){
           food[i].flag=false;
           snake.foods++;
-          if(snake.food>=20)
+          if(snake.foods>=20)
               game_win=true;
           snake.x[snake.length]=usedx;
           snake.y[snake.length]=usedy;
