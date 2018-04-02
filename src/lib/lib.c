@@ -33,13 +33,12 @@ void memcpy(char *dest,const char *src,size_t size){
        while(size--)
            *dest++=*src++;
    }
-   //return ret_val
+  
 }
 
-/*void memset(void *dest,int data,size_t size){
+void memset(void *dest,int data,size_t size){
    
 }
-*/
 
 size_t strlen(const char *str){
     int len=0;
@@ -49,7 +48,6 @@ size_t strlen(const char *str){
 }
 
 char *strcpy(char *dest,const char *src){
-
     char *ret_val=dest;
     memcpy(dest,src,strlen(src)+1);
     return ret_val;

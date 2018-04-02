@@ -5,7 +5,6 @@
 #include "stdlib.h"
 #include "ctype.h"
 
-
 /*
 unsigned int write_int(char *buf,int val){
     unsigned char stack[10];
@@ -148,7 +147,6 @@ void printch(const char ch){
 }
 
 void printint(int num,int radix,int sign,char flag,int width,int precision){
-    //precision to be completed
     static char digits[]="0123456789abcdef";
     char buffer[30];
    
@@ -201,11 +199,9 @@ void printfloat(const float flt){
 }
 
 int printf(const char *fmt,... ){
-    
     char flag='\0';
     int width=0;
     int precision=0;
-   
     va_list ap;
     va_start(ap,fmt);
 
@@ -221,7 +217,6 @@ int printf(const char *fmt,... ){
              flag=*fmt++;
           if(is_digit(*fmt))
              width=get_int(&fmt);
-          
           switch(*fmt){
              case '%': _putc('%');break;
              case 'c': {

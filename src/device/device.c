@@ -6,16 +6,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-/*parameter
-_DEV_PERFCNT 0x0000ac01
-_DEV_INPUT   0x0000ac02
-_DEV_TIMER   0x0000ac03
-_DEV_VIDEO   0x0000ac04
-_DEV_PCICONF 0x00000080
-_DEV_ATA0    0x00000dd0
-_DEV_ATA1    0x00000dd1
-*/
-
 static _Device *perfcnt = NULL;
 static _Device *input = NULL;
 static _Device *timer = NULL;
