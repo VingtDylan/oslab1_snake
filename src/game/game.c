@@ -209,10 +209,12 @@ void screen_update(){
   if(!snake.alive)
       backgroundcolor=firebrick;
  
+  /*
   for(int i=1;i<snake.length;i++){
       snake.x[i]=snake.x[i-1]+1;
       snake.y[i]=snake.y[i-1];
-  }
+  }*/
+  
   //printf("%d,%d",screen.width,screen.height);
   for(int i=0;i<screen.width;i++){
       for(int j=0;j<screen.height;j++){
