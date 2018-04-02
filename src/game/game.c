@@ -133,8 +133,8 @@ void draw_screen(){
   if(!gameflag){
      printf("L for lost!\n");
      uint32_t pixel=firebrick;
-     for(int i=0;i<screen.width;i++){
-        for(int j=0;j<screen.height;j++){
+     for(int i=0;i<screen.width;i++)
+        for(int j=0;j<screen.height;j++)
            draw_rect(&pixel,i,j,1,1);
      for(int x=0;x<20;x++)
         for(int y=0;y<150;y++)
@@ -146,8 +146,8 @@ void draw_screen(){
   else{
      printf("V for win\n");
      uint32_t pixel=purple;
-     for(int i=0;i<screen.width;i++){
-        for(int j=0;j<screen.height;j++){
+     for(int i=0;i<screen.width;i++)
+        for(int j=0;j<screen.height;j++)
            draw_rect(&pixel,i,j,1,1);
      for(int x=0;x<=75;x++)
         for(int y=0;y<150;y++)
