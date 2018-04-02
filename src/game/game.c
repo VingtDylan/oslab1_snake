@@ -31,6 +31,7 @@ static int dida=0;
 static int foo=0;
 static int usedx,usedy;
 static int wal=0;
+static int walldir=1;
 
 bool foodflag;
 bool gameflag;
@@ -75,8 +76,6 @@ void init_game(){
      snake.y[i]=snake.y[i-1];
   }
 }
-
-static int walldir=1;
 
 void generate(){
   if(foodflag&&(dida%20!=0))
