@@ -72,16 +72,17 @@ uint32_t uptime() {
   return boottime.lo;
 }
 
-_KbdReg *read_key() {
+void read_key(int *key,int *pressed) {
   if (!input)
     init_input();
 
-  _KbdReg *pressed=NULL;
-  input->read(_DEVREG_INPUT_KBD, &pressed, sizeof(pressed));
-  pressed->keydown=(pressed==NULL)?0:1;
-  pressed->keycode=(pressed->keydown==1)?(pressed->keycode):0;
-  printf("%d %d\n",pressed->keydown,pressed->keycode);
-  return pressed;
+  _KbdReg kbd;;
+  input->read(_DEVREG_INPUT_KBD, &kbd, sizeof(kbd));
+  if(key)
+      *key=kbd.keycode;
+  if(down)
+      *pressed=kbd.keydown;
+  printf("%d,%d",*key,*pressed);
 }
 
 void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
