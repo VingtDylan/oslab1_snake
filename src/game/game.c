@@ -93,7 +93,7 @@ void generate(){
   food[foo].flag=true;
   foo++;
   foodflag=true;
-  if(foo==10)
+  if(foo==20)
       game_win=true;
    
   if(dida%10!=0)
@@ -229,8 +229,10 @@ bool game_end(){
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
      for(int i=0;i<wal;i++){
-         if(snake.x[0]==wall[i].wx&&snake.y[0]==wall[i].wy)
+         if(snake.x[0]>=wall[i].wx&&snake.x[0]<=wall[i]+4&&snake.y[0]>=wall[i].wy&&snake.y[0]<=wall[i].wy+4){
              gameflag=false;
+             break;
+         }
      }
      for(int i=1;i<snake.length;i++){
          if((snake.x[0]==snake.x[i])&&(snake.y[0]==snake.y[i])){
@@ -295,8 +297,8 @@ void main_loop(){
       read_key(&key,&pressed);
       kbd_event(key,pressed);
       game_progress();
-      //if(game_end())
-          //break;
+      if(game_end())
+          break;
       if(game_win)
           break;
       screen_update();
