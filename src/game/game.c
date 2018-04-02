@@ -309,7 +309,8 @@ void main_loop(){
    init_screen(fps);
    init_game();        
    unsigned long  next_frame=0;
-      
+   int n;
+   scanf("%d",&n);   
    while(1){
       while(uptime()<next_frame); 
       timer();
@@ -324,7 +325,6 @@ void main_loop(){
       screen_update();
       next_frame+=1000/FPS;
   }
-  
   draw_screen();
 
 }
