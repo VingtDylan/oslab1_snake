@@ -107,7 +107,7 @@ void generate(){
   food[foo].flag=true;
   foo++;
   foodflag=true;
-  if(foo==20)
+  if(snake.foods==1)
       game_win=true;
    
   if(dida%20!=0)
