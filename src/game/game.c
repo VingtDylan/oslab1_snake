@@ -90,7 +90,7 @@ void generate(){
       return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
-  food[foo].flag=false;//true;
+  food[foo].flag=true;
   foo++;
   foodflag=true;
   if(foo==10)
@@ -200,7 +200,7 @@ void snake_move(){
 
 void get_food(){
   for(int i=0;i<foo;i++){
-     if(snake.x[0]>=food[i].fx&&snake.x[0]+4<=food[i].fx&&snake.y[0]>=food[i].fy&&snake.y[0]<=food[i].fy+4){
+     if(snake.x[0]>=food[i].fx-4&&snake.x[0]<=food[i].fx+4&&snake.y[0]>=food[i].fy-4&&snake.y[0]<=food[i].fy+4){
           food[i].flag=false;
           snake.foods++;
           if(snake.foods>=20)
