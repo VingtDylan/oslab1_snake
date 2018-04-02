@@ -92,11 +92,11 @@ void generate(){
   foo++;
   wall[wal].wx=rand()%(screen.width);
   wall[wal].wy=rand()%(screen.height);
-  wal+=10;
+  wal+=20;
   if(wal<=1000)
-      for(int i=wal-9;i<wal;i++){
-          wall[i].wx=wall[wal-10].wx+1;
-          wall[i].wy=wall[wal-10].wy;
+      for(int i=wal-19;i<wal;i++){
+          wall[i].wx=wall[i-1].wx+1;
+          wall[i].wy=wall[i-1].wy;
       }
   if(foo==50)
       game_win=true;
