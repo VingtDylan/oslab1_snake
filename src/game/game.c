@@ -83,7 +83,7 @@ void generate(){
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
-  if(foo==30)
+  if(foo==50)
       game_win=true;
   //foodflag=true;
 }
@@ -266,7 +266,7 @@ void main_loop(){
       //kbd_event(key); 
       int key,pressed;
       read_key(&key,&pressed);
-      printf("%d,%d",key,pressed);
+      //printf("%d,%d",key,pressed);
       kbd_event(key,pressed);
       game_progress();
       //if(game_end())
