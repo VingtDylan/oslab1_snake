@@ -90,7 +90,7 @@ void generate(){
       return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
-  food[foo].flag=true;
+  food[foo].flag=false;//true;
   foo++;
   foodflag=true;
   if(foo==10)
