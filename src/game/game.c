@@ -89,7 +89,7 @@ void init_game(){
 static int walldir=0;
 
 void generate(){
-  if(foodflag&&(dida%10!=0))
+  if(foodflag&&(dida%20!=0))
       return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
