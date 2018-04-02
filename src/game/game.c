@@ -259,6 +259,8 @@ bool game_end(){
              printf("%d %d %d %d %d",i,snake.x[i],snake.x[0],snake.y[i],snake.y[0]);
          }
      }
+     if(dida>=100)
+         gameflag=false;
      if(!gameflag)
          return true;
      return false;
@@ -306,7 +308,7 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);
    init_game();        
-   /*unsigned long  next_frame=0;
+   unsigned long  next_frame=0;
       
    while(1){
       while(uptime()<next_frame); 
@@ -322,7 +324,7 @@ void main_loop(){
       screen_update();
       next_frame+=1000/FPS;
   }
-  */
+  
   draw_screen();
 
 }
