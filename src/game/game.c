@@ -287,8 +287,8 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);
    init_game();     
-   //draw_screen();   
-   unsigned long  next_frame=0;
+   draw_screen();   
+   /*unsigned long  next_frame=0;
       
    while(1){
       while(uptime()<next_frame); 
@@ -303,7 +303,14 @@ void main_loop(){
           break;
       screen_update();
       next_frame+=1000/FPS;
-    }
+  }
+  if(!gameflag){
+      printf("Lose!\n");
+  }
+  if(game_win){
+      printf("Winner!\n");
+  }*/
+
 }
 
 
