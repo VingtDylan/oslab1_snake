@@ -77,7 +77,11 @@ void init_game(){
   snake.speed=1;
   snake.direction=2;
   snake.alive=true;
-  foodflag=false;
+  food[foo].fx=rand()%(screen.width);
+  food[foo].fy=rand()%(screen.height);
+  food[foo].flag=true;
+  foo++;
+  foodflag=true;
   gameflag=true;
   game_win=false;
   for(int i=1;i<snake.length;i++){
