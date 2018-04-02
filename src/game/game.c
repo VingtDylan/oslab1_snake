@@ -13,6 +13,7 @@
 #define firebrick 0x00b12222
 #define deeppink  0x00ff1493
 #define magenta   0x00ff00ff
+#define purple    0x006f005a
 
 //direction
 #define left  1
@@ -109,13 +110,28 @@ void generate(){
 }
 
 void draw_screen(){
-  uint32_t pixel=firebrick;
-  for(int x=0;x<20;x++)
-    for(int y=0;y<150;y++)
-       draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
-  for(int x=0;x<150;x++)
-    for(int y=130;y<150;y++)
-       draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
+  if(!gameflag){
+     printf("L for lost!\n");
+     uint32_t pixel=firebrick;
+     for(int x=0;x<20;x++)
+        for(int y=0;y<150;y++)
+           draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
+     for(int x=0;x<150;x++)
+        for(int y=130;y<150;y++)
+           draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
+  }
+  else{
+     printf("V for win\n");
+     uint32_t pixel=purple;
+     for(int x=0;x<=75;x++)
+        for(int y=0;y<150;y++)
+            if(y>=2x-10&&y<=2x+10)
+               draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
+     for(int x=75;x<150;x++)
+        for(int y=0;y<150;y++)
+            if(2x+y>=290&&2x+y<=310)
+               draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);    
+  }
 }
 
 //static int n=0;
@@ -289,8 +305,7 @@ void screen_update(){
 void main_loop(){ 
    static int fps=30;
    init_screen(fps);
-   init_game();     
-   draw_screen();   
+   init_game();        
    /*unsigned long  next_frame=0;
       
    while(1){
@@ -307,12 +322,8 @@ void main_loop(){
       screen_update();
       next_frame+=1000/FPS;
   }
-  if(!gameflag){
-      printf("Lose!\n");
-  }
-  if(game_win){
-      printf("Winner!\n");
-  }*/
+  */
+  draw_screen();
 
 }
 
