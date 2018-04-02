@@ -93,7 +93,7 @@ void generate(){
   wall[wal].wx=rand()%(screen.width);
   wall[wal].wy=rand()%(screen.height);
   wal+=5;
-  for(int i=val-4;i<wal;i++){
+  for(int i=wal-4;i<wal;i++){
       wall[i].wx=wall[i-5].wx+1;
       wall[i].wy=wall[i-5].wy;
   }
@@ -231,7 +231,7 @@ void screen_update(){
   uint32_t backgroundcolor=lightgrey;
   uint32_t snakecolor=darkgreen;
   uint32_t foodcolor=deeppink;
-  uint32_t wallcolor=megenta;
+  uint32_t wallcolor=magenta;
 
   if(!snake.alive)
       backgroundcolor=firebrick;
