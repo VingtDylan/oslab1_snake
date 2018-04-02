@@ -137,8 +137,8 @@ void draw_screen(){
      for(int x=0;x<screen.width;x++){
         for(int y=0;y<screen.height;y++){
            draw_rect(&background,x,y,1,1);
-           if(x<20&&y<150)
-              draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
+           if(x<290&&y<150)
+              draw_rect(&pixel,x,j,1,1);
            if(x<20&&y>=130&&y<150)
               draw_rect(&pixel,x+screen.width/2-50,y+screen.height/2-50,1,1);
         }
