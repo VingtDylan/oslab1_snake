@@ -107,7 +107,7 @@ void kbd_event(_KbdReg *key){
         case 73:     {  //_KEY_UP
                              if(snake.direction!=down)
                                    snake.direction=up;
-                             printf("Up key!\b");     
+                             printf("Up key!\n");     
                              break;
                           }
         case 74:   {  //_KEY_DOWN
