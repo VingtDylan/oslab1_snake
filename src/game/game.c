@@ -164,25 +164,25 @@ void draw_screen(){
 void kbd_event(int ckey,int ckeydown){
   if(ckeydown){
      switch(ckey){
-        case 73:     {  //_KEY_UP
+        case _KEY_UP:     {  //_KEY_UP
                              if(snake.direction!=down)
                                    snake.direction=up;
                              printf("Up key!\n");     
                              break;
                           }
-        case 74:   {  //_KEY_DOWN
+        case _KEY_DOWN:   {  //_KEY_DOWN
                              if(snake.direction!=up)
                                    snake.direction=down;
                              printf("Down key!\n");   
                              break;
                           }
-        case 75:  {  //_KEY_LEFT
+        case _KEY_LEFT:  {  //_KEY_LEFT
                              if(snake.direction!=right)
                                    snake.direction=left;
                              printf("Left key!\n");   
                              break;
                           }
-        case 76:  {  //_KEY_RIGHT
+        case _KEY_RIGHT:  {  //_KEY_RIGHT
                              if(snake.direction!=left)
                                    snake.direction=right;
                              printf("Right key!\n"); 
