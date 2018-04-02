@@ -252,7 +252,7 @@ void screen_update(){
              }
          }
          for(int k=0;k<wal;k++){
-             if(wall[wal].wx>=i&&wall[wal].wx<=i+4&&wall[wal].wy>=j&&wall[wal].wy<=j+4)
+             if(wall[k].wx>=i&&wall[k].wx<=i+4&&wall[k].wy>=j&&wall[k].wy<=j+4)
                   draw_rect(&wallcolor,i,j,1,1);
          }
       }
