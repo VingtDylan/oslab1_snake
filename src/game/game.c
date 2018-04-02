@@ -12,6 +12,7 @@
 #define darkgreen 0x00006400
 #define firebrick 0x00b12222
 #define deeppink  0x00ff1493
+#define magenta   0x00ff00ff
 
 //direction
 #define left  1
@@ -40,9 +41,15 @@ struct{
    int fy;
 }food[100];
 
+struct {
+   int wx;
+   int wy;
+}wall[100];
+
 static int dida=0;
 static int foo=0;
 static int usedx,usedy;
+static int wal=0;
 
 bool foodflag;
 bool gameflag;
@@ -83,6 +90,13 @@ void generate(){
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
   foo++;
+  wall[wal].wx=rand()%(screen.width);
+  wall[wal].wy=rand()%(screen.height);
+  wal+=5;
+  for(int i=val-4;i<wal;i++){
+      wall[i].wx=wall[i-5].wx+1;
+      wall[i].wy=wall[i-5].wy;
+  }
   if(foo==50)
       game_win=true;
   //foodflag=true;
@@ -185,7 +199,7 @@ void get_food(){
           snake.foods++;
           snake.x[snake.length]=usedx;
           snake.y[snake.length]=usedy;
-         snake.length++;
+          snake.length++;
      } 
   } 
   return ;
@@ -217,21 +231,14 @@ void screen_update(){
   uint32_t backgroundcolor=lightgrey;
   uint32_t snakecolor=darkgreen;
   uint32_t foodcolor=deeppink;
+  uint32_t wallcolor=megenta;
+
   if(!snake.alive)
       backgroundcolor=firebrick;
  
-  /*
-  for(int i=1;i<snake.length;i++){
-      snake.x[i]=snake.x[i-1]+1;
-      snake.y[i]=snake.y[i-1];
-  }*/
-  
-  //printf("%d,%d",screen.width,screen.height);
   for(int i=0;i<screen.width;i++){
       for(int j=0;j<screen.height;j++){
          draw_rect(&backgroundcolor,i,j,1,1);
-         //for(int k=0;k<snake.length;k++)
-         //     printf("%d %d\n",snake.x[k],snake.y[k]); 
          for(int k=0;k<snake.length;k++){
              if(snake.x[k]>=i&&snake.x[k]<=i+4&&snake.y[k]>=j&&snake.y[k]<=j+4){
                    draw_rect(&snakecolor,i,j,1,1);
@@ -241,10 +248,12 @@ void screen_update(){
          for(int k=0;k<=foo;k++){
              if(food[k].fx>=i&&food[k].fx<=i+4&&food[k].fy>=j&&food[k].fy<=j+4){
                   draw_rect(&foodcolor,i,j,1,1);
-                  //printf("food!\n");
              }
          }
-         
+         for(int k=0;k<wal;k++){
+             if(wall[wal].wx>=i&&wall[wal].wx<=i+4&&wall[wal].wy>=j&&wall[wal].wy<=j+4)
+                  draw_rect(&wallcolor,i,j,1,1);
+         }
       }
   }
 }
@@ -254,19 +263,13 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);
    init_game();     
-   //printf("%d %d ",screen.height,screen.width); 
    //draw_screen();   
-   //for(int i=0;i<snake.length;i++)
-       //printf(" %d %d",snake.x[i],snake.y[i]);
    unsigned long  next_frame=0;
       
    while(1){
-      while(uptime()<next_frame);
-      //_KbdReg *key=read_key();
-      //kbd_event(key); 
+      while(uptime()<next_frame); 
       int key,pressed;
       read_key(&key,&pressed);
-      //printf("%d,%d",key,pressed);
       kbd_event(key,pressed);
       game_progress();
       //if(game_end())

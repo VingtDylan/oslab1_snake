@@ -82,7 +82,6 @@ void read_key(int *key,int *pressed) {
       *key=kbd.keycode;
   if(pressed)
       *pressed=kbd.keydown;
-  printf("%d,%d",*key,*pressed);
 }
 
 void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
@@ -100,7 +99,7 @@ void draw_rect(uint32_t *pixels, int x, int y, int w, int h) {
 }
 
 void draw_sync() {
-  // to be compledted
+  //to be completed
 }
 
 int screen_width() {
