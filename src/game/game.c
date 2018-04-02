@@ -1,25 +1,4 @@
 #include "game.h"
-#include "stdio.h"
-#include "lib.h"
-#include "am.h"
-#include "amdev.h"
-#include "type.h"
-#include "tool.h"
-#include "time.h"
-
-//color
-#define lightgrey 0x00d3d3d3
-#define darkgreen 0x00006400
-#define firebrick 0x00b12222
-#define deeppink  0x00ff1493
-#define magenta   0x00ff00ff
-#define purple    0x006f005a
-
-//direction
-#define left  1
-#define right 2
-#define up    3
-#define down  4
 
 struct{
    int fps;
@@ -139,7 +118,7 @@ void draw_screen(){
            draw_rect(&background,x,y,1,1);
            if(x<290&&x>270&&y>190&&y<340)
               draw_rect(&pixel,x,y,1,1);
-           if(x<330&&x>270&&y>320&&y<340)
+           if(x<340&&x>270&&y>320&&y<340)
               draw_rect(&pixel,x,y,1,1);
         }
      }
@@ -164,25 +143,25 @@ void draw_screen(){
 void kbd_event(int ckey,int ckeydown){
   if(ckeydown){
      switch(ckey){
-        case _KEY_UP:     {  //_KEY_UP
+        case _KEY_UP:     {  
                              if(snake.direction!=down)
                                    snake.direction=up;
                              printf("Up key!\n");     
                              break;
                           }
-        case _KEY_DOWN:   {  //_KEY_DOWN
+        case _KEY_DOWN:   {  
                              if(snake.direction!=up)
                                    snake.direction=down;
                              printf("Down key!\n");   
                              break;
                           }
-        case _KEY_LEFT:  {  //_KEY_LEFT
+        case _KEY_LEFT:   {   
                              if(snake.direction!=right)
                                    snake.direction=left;
                              printf("Left key!\n");   
                              break;
                           }
-        case _KEY_RIGHT:  {  //_KEY_RIGHT
+        case _KEY_RIGHT:  {   
                              if(snake.direction!=left)
                                    snake.direction=right;
                              printf("Right key!\n"); 
