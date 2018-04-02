@@ -228,6 +228,10 @@ bool game_end(){
          gameflag=false;
      if(snake.y[0]<0||snake.y[0]>screen.height)
          gameflag=false;
+     for(int i=0;i<wal;i++){
+         if(snake.x[0]==wall[i].wx&&snake.y[0]==wall[i].wy)
+             gameflag=false;
+     }
      for(int i=1;i<snake.length;i++){
          if((snake.x[0]==snake.x[i])&&(snake.y[0]==snake.y[i])){
              gameflag=false; 
@@ -242,7 +246,7 @@ bool game_end(){
 void game_progress(){
   generate();
   snake_move();
-  //get_food();
+  get_food();
 }
 
 void screen_update(){
