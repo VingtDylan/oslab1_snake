@@ -80,7 +80,7 @@ void read_key(int *key,int *pressed) {
   input->read(_DEVREG_INPUT_KBD, &kbd, sizeof(kbd));
   if(key)
       *key=kbd.keycode;
-  if(down)
+  if(pressed)
       *pressed=kbd.keydown;
   printf("%d,%d",*key,*pressed);
 }

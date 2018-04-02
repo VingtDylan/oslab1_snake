@@ -98,7 +98,7 @@ void draw_screen(){
 //static int n=0;
 //static int index=0;
 
-void kbd_event(_KbdReg *key){
+void kbd_event(int ckey,int ckeydown){
   
   /*key->keydown=1;
   key->keycode=n%4+73;
@@ -114,8 +114,8 @@ void kbd_event(_KbdReg *key){
   }
   index=(index+1)%8;*/
   //printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
-  if(key->keydown){
-     switch(key->keycode){
+  if(ckeydown){
+     switch(ckey){
         case 73:     {  //_KEY_UP
                              if(snake.direction!=down)
                                    snake.direction=up;
@@ -262,8 +262,12 @@ void main_loop(){
       
    while(1){
       while(uptime()<next_frame);
-      _KbdReg *key=read_key();
-      kbd_event(key); 
+      //_KbdReg *key=read_key();
+      //kbd_event(key); 
+      int key,pressed;
+      read_key(&key,&pressed);
+      printf("%d,%d",key,pressed);
+      kbd_event(key,pressed);
       game_progress();
       //if(game_end())
           //break;
