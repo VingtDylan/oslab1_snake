@@ -44,7 +44,7 @@ struct{
 struct {
    int wx;
    int wy;
-}wall[100];
+}wall[1000];
 
 static int dida=0;
 static int foo=0;
@@ -92,11 +92,12 @@ void generate(){
   foo++;
   wall[wal].wx=rand()%(screen.width);
   wall[wal].wy=rand()%(screen.height);
-  wal+=5;
-  for(int i=wal-4;i<wal;i++){
-      wall[i].wx=wall[i-5].wx+1;
-      wall[i].wy=wall[i-5].wy;
-  }
+  wal+=10;
+  if(wal<=1000)
+      for(int i=wal-9;i<wal;i++){
+          wall[i].wx=wall[wal-10].wx+1;
+          wall[i].wy=wall[wal-10].wy;
+      }
   if(foo==50)
       game_win=true;
   //foodflag=true;
