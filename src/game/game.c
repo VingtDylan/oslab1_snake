@@ -103,12 +103,16 @@ void kbd_event(_KbdReg *key){
   key->keydown=1;
   key->keycode=n%4+73;
   switch(index){
-     case 0:n=2;break;
-     case 1:n=0;break;
-     case 2:n=3;break;
+     case 0:
+     case 1:n=2;break;
+     case 2:
      case 3:n=0;break;
+     case 4:
+     case 5:n=3;break;
+     case 6:
+     case 7:n=0;break;
   }
-  index=(index+1)%4;
+  index=(index+1)%8;
   //printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
   if(key->keydown){
      switch(key->keycode){
