@@ -167,11 +167,11 @@ void snake_move(){
                     break;
                 }
      case left: {
-                    snake.x[0]+=snake.speed*4;
+                    snake.x[0]-=snake.speed*4;
                     break;
                 }
      case right:{ 
-                    snake.x[0]-=snake.speed*4;
+                    snake.x[0]+=snake.speed*4;
                 }
      default:break;
   } 
