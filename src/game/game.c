@@ -86,6 +86,8 @@ void init_game(){
   }
 }
 
+static int walldir=0;
+
 void generate(){
   if(foodflag&&(dida%10!=0))
       return ;
@@ -103,10 +105,18 @@ void generate(){
   wall[wal].wy=rand()%(screen.height);
   wal+=20;
   if(wal<=1000)
-      for(int i=wal-19;i<wal;i++){
-          wall[i].wx=wall[i-1].wx+1;
-          wall[i].wy=wall[i-1].wy;
+      if(walldir%2==0){
+         for(int i=wal-19;i<wal;i++){
+            wall[i].wx=wall[i-1].wx+1;
+            wall[i].wy=wall[i-1].wy;
+         }
+      }else {
+         for(int i=wal-19;i<wal;i++){
+            wall[i].wx=wall[i-1].wx;
+            wall[i].wy=wall[i-1].wy+1;
+         }
       }
+      walldir++;
 }
 
 void draw_screen(){
@@ -134,25 +144,7 @@ void draw_screen(){
   }
 }
 
-//static int n=0;
-//static int index=0;
-
 void kbd_event(int ckey,int ckeydown){
-  
-  /*key->keydown=1;
-  key->keycode=n%4+73;
-  switch(index){
-     case 0:
-     case 1:n=2;break;
-     case 2:
-     case 3:n=0;break;
-     case 4:
-     case 5:n=3;break;
-     case 6:
-     case 7:n=0;break;
-  }
-  index=(index+1)%8;*/
-  //printf("%d %d %d ",_KEY_DOWN,_KEY_LEFT,_KEY_RIGHT);
   if(ckeydown){
      switch(ckey){
         case 73:     {  //_KEY_UP
@@ -308,9 +300,7 @@ void main_loop(){
    static int fps=30;
    init_screen(fps);
    init_game();        
-   unsigned long  next_frame=0;
-   int n;
-   scanf("%d",&n);   
+   unsigned long  next_frame=0; 
    while(1){
       while(uptime()<next_frame); 
       timer();
