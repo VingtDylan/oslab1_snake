@@ -150,7 +150,7 @@ void draw_screen(){
      for(int x=0;x<screen.width;x++){
         for(int y=0;y<screen.height;y++){
            draw_rect(&background,x,y,1,1);
-           if(x>=270&&x<=345&&y>0&&y<340)
+           if(x>=270&&x<=345&&y>190&&y<340)
               if((y-190)>=2*(x-270)-10&&(y-190)<=2*(x-270)+10)
                    draw_rect(&pixel,x,y,1,1);
            if(x>=345&&x<=420&&y>190&&y<340)
