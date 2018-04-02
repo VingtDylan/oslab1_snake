@@ -39,6 +39,7 @@ struct{
 struct{
    int fx;
    int fy;
+   bool flag;
 }food[100];
 
 struct {
@@ -85,11 +86,18 @@ void init_game(){
 }
 
 void generate(){
-  //if(foodflag)
-  //    return ;
+  if(foodflag&&(dida%10!=0))
+      return ;
   food[foo].fx=rand()%(screen.width);
   food[foo].fy=rand()%(screen.height);
+  food[foo].flag=true;
   foo++;
+  foodflag=true;
+  if(foo==10)
+      game_win=true;
+  
+  if(dida%10!=0)
+      return ;
   wall[wal].wx=rand()%(screen.width);
   wall[wal].wy=rand()%(screen.height);
   wal+=20;
@@ -98,9 +106,6 @@ void generate(){
           wall[i].wx=wall[i-1].wx+1;
           wall[i].wy=wall[i-1].wy;
       }
-  if(foo==50)
-      game_win=true;
-  //foodflag=true;
 }
 
 void draw_screen(){
@@ -196,11 +201,23 @@ void snake_move(){
 void get_food(){
   for(int i=0;i<foo;i++){
      if(snake.x[0]==food[i].fx&&snake.y[0]==food[i].fy){
-          foodflag=false;
+          food[i].flag=false;
           snake.foods++;
+          if(snake.food>=20)
+              game_win=true;
           snake.x[snake.length]=usedx;
           snake.y[snake.length]=usedy;
           snake.length++;
+          foodflag=false;
+          for(int j=i;j<foo;j++){ 
+             food[j].fx=food[j+1].fx;
+             food[j].fy=food[j+1].fy;
+             food[j].flag=food[j+1].flag;
+          }
+          foo--;
+          for(int j=0;j<=foo;j++)
+             if(food[j].flag)
+                 foodflag=true;
      } 
   } 
   return ;
@@ -269,6 +286,7 @@ void main_loop(){
       
    while(1){
       while(uptime()<next_frame); 
+      timer();
       int key,pressed;
       read_key(&key,&pressed);
       kbd_event(key,pressed);
