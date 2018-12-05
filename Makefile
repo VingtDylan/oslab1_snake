@@ -3,6 +3,9 @@ CFLAGS  = -std=c99 -O2 -MMD -Wall -Werror -ggdb -fno-builtin \
           -m32 -march=i386 -I./include
 LDFLAGS = -melf_i386 -Ttext 0x00100000 
 
+STUID = 161240005
+STUNAME = 陈勇虎
+
 SRCS = $(shell find src -name "*.c")
 OBJS = $(addprefix build/, $(addsuffix .o, $(basename $(SRCS))))
 DEPS = $(addprefix build/, $(addsuffix .d, $(basename $(SRCS))))
